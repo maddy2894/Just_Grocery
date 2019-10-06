@@ -1,4 +1,4 @@
-package au.usyd.elec5619;
+package au.usyd.elec5619.web;
 
 import java.text.DateFormat;
 import java.util.Date;
