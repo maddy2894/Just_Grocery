@@ -10,17 +10,6 @@
 	Login
 </h1>
 
-<%-- <P>  The time on the server is ${serverTime}. </P> --%>
-<p>Email:</p>
-<input type="email">
-<p>Password:</p>
-<input type="password">
-<p>forgot password</p>
-<div>
-<button type="button">Login</button>
-<button type="button">Register</button>
-<button type="button">Sign up with Google</button>
-</div>
-
+<P> The time on the server is ${serverTime}. </P>
 </body>
 </html>
