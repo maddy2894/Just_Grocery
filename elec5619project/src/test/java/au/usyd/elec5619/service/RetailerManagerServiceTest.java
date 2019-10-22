@@ -8,9 +8,9 @@ import java.util.List;
 
 import au.usyd.elec5619.domain.retailer;
 
-public class retailer_manager_service_test extends TestCase {
+public class RetailerManagerServiceTest extends TestCase {
 
-		private retailer_manager_service rms;
+		private RetailerManagerService rms;
 		
 		private List<retailer> retailers;
 		//private static int PRODUCT_COUNT=2;
@@ -25,7 +25,7 @@ public class retailer_manager_service_test extends TestCase {
 		
 			
 		protected void setUp() throws Exception {
-			rms = new retailer_manager_service();
+			rms = new RetailerManagerService();
 			retailers = new ArrayList<retailer>();
 			
 			retailer retailer_val=new retailer();

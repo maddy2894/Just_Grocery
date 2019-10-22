@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import au.usyd.elec5619.domain.retailer;
-import au.usyd.elec5619.web.HomeController;
 
 @Service(value="retailerManager")
 @Transactional

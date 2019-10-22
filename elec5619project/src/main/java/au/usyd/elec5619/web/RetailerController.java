@@ -14,16 +14,17 @@ import org.slf4j.LoggerFactory;
 //import org.apache.commons.logging.Log;
 //import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
-//import org.springframework.stereotype.Controller;
+//import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.stereotype.Controller;
 import au.usyd.elec5619.service.RetailerManager;
 import javax.annotation.*;
 
 
-//@Controller
-public class RetailerController implements Controller{
+@Controller
+public class RetailerController{
 //	protected final Log logger = LogFactory.getLog(getClass());
 	private static final Logger logger = LoggerFactory.getLogger(RetailerController.class);
 	
@@ -31,7 +32,7 @@ public class RetailerController implements Controller{
 	private RetailerManager retailerManager;
 	//System.out.print('____________________________________________')
 	
-	//@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public ModelAndView handleRequest(HttpServletRequest request,
 	HttpServletResponse response) throws ServletException,IOException {
 	String now = (new Date()).toString();

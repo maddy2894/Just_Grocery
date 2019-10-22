@@ -1,4 +1,4 @@
-package au.usyd.elec5619;
+package au.usyd.elec5619.web;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping(value = "/**")
+//@RequestMapping(value = "/**")
 public class ProductController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);

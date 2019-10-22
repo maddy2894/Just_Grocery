@@ -64,9 +64,9 @@
 		<beans:property name="basename" value="messages"/>
 	</beans:bean>
 	
- 	<beans:bean name="/hello.htm" class="au.usyd.elec5619.web.RetailerController">
+ 	<!-- <beans:bean name="/hello.htm" class="au.usyd.elec5619.web.RetailerController">
 		<beans:property name="retailerManager" ref="retailerManager"/>
-	</beans:bean> 
+	</beans:bean> --> 
 	
 	
 </beans:beans>
