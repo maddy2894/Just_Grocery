@@ -1,5 +1,5 @@
 package au.usyd.elec5619.web;
-import java.util.Date; 
+import java.util.Date;  
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,22 +16,24 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
-//import org.springframework.stereotype.Controller;
+//import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.stereotype.Controller;
 import au.usyd.elec5619.service.RetailerManager;
 import javax.annotation.*;
 
 
-//@Controller
-public class RetailerController implements Controller{
+@Controller
+public class RetailerController 
+//implements Controller
+{
 //	protected final Log logger = LogFactory.getLog(getClass());
 	private static final Logger logger = LoggerFactory.getLogger(RetailerController.class);
 	
 	@Resource(name="retailerManager")
-	private RetailerManager retailerManager;
+	public RetailerManager retailerManager;
 	//System.out.print('____________________________________________')
 	
-	//@RequestMapping(value = "/hello", method = RequestMethod.GET)
+	@RequestMapping(value = "/hello", method = RequestMethod.GET)
 	public ModelAndView handleRequest(HttpServletRequest request,
 	HttpServletResponse response) throws ServletException,IOException {
 	String now = (new Date()).toString();

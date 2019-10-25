@@ -26,11 +26,19 @@ public class wish_list implements Serializable {
 		this.id = id;
 	}
 	
-	
+	@Column(name="username")
 	String username;
+	
+	@Column(name="wishlist_name")
 	String wishlist_name;
-	String [] list_of_products;
+
+	@Column(name="list_of_products")
+	String[] list_of_products;
+	
+	@Column(name="updated_time")
 	Date updated_time;
+
+	@Column(name="is_active")
 	String is_active;
 	
 	public String getUsername() {

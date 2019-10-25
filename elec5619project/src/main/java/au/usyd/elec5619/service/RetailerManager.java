@@ -6,6 +6,6 @@ import au.usyd.elec5619.domain.retailer;
 
 public interface RetailerManager extends Serializable {
 	
-	public List<retailer> getRetailers(); 
+	public List<String> getRetailers(); 
 
 }

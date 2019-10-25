@@ -5,6 +5,7 @@ import java.util.Map;
 import junit.framework.TestCase;
 
 import org.springframework.web.servlet.ModelAndView;
+
 import au.usyd.elec5619.service.RetailerManagerService;
 
 public class RetailerControllerTest extends TestCase
@@ -12,7 +13,7 @@ public class RetailerControllerTest extends TestCase
 	public void testHandleRequestView() throws Exception{
 		
 		RetailerController controller= new RetailerController();
-		controller.setRetailerManager(new RetailerManagerService());
+	    controller.setRetailerManager(new RetailerManagerService());
 		ModelAndView modelAndView = controller.handleRequest(null, null);
 		assertEquals("hello", modelAndView.getViewName());
 		assertNotNull(modelAndView.getModel());

@@ -28,5 +28,9 @@
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" cache-period="31556926"/>
 	<mvc:annotation-driven/>
+	
+	<!-- <beans:bean name="/hello" class="au.usyd.elec5619.web.RetailerController">
+		<beans:property name="retailerManager" ref="retailerManager"/>
+	</beans:bean> -->
 		
 </beans:beans>

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import au.usyd.elec5619.domain.retailer;
-import au.usyd.elec5619.web.HomeController;
 
 @Service(value="retailerManager")
 @Transactional
@@ -25,7 +24,7 @@ public class DbRetailerManager implements RetailerManager {
 	}
 	
 	@Override
-	public List<retailer> getRetailers() {
+	public List<String> getRetailers() {
 		logger.info("in get retailers DB one.");
 		/*
 		 * return this.sessionFactory.getCurrentSession().createQuery(
@@ -34,7 +33,7 @@ public class DbRetailerManager implements RetailerManager {
 		 * " where pp.price_date='2019-10-20' " + " and pp.retailer_id=rt.id " +
 		 * " and rt.location='CBD'" + " order by pp.product_id").list();
 		 */
-		return this.sessionFactory.getCurrentSession().createQuery("from product_prices where price_date='2019-10-20'").list();
+		return this.sessionFactory.getCurrentSession().createQuery("select distinct product_name from product_prices where price_date='2019-10-20'").list();
 	}
 	
 }
