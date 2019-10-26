@@ -23,7 +23,7 @@
 	
 	<context:component-scan base-package="au.usyd.elec5619" />
 	
- 		<beans:bean id="retailerManager" class="au.usyd.elec5619.service.DbRetailerManager">
+ 		<beans:bean id="loginManager" class="au.usyd.elec5619.service.DbLoginManager">
 	<!-- <beans:property name="retailers">
 	<beans:list>
 		<beans:ref bean="retailer1"/>
@@ -33,7 +33,7 @@
 	</beans:property> -->
 	</beans:bean> 
 	
-	<beans:bean id="retailer1" class="au.usyd.elec5619.domain.retailer">
+	<!-- <beans:bean id="retailer1" class="au.usyd.elec5619.domain.retailer">
 	<beans:property name="id" value="1"/>
 	<beans:property name="name" value="Woolworths"/>
 	<beans:property name="contact" value="0478757655"/>
@@ -59,14 +59,16 @@
 	<beans:property name="location" value="CBD"/>
 	<beans:property name="post_code" value="2008"/>
 	</beans:bean>
-	
+	 -->
 	<beans:bean id ="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<beans:property name="basename" value="messages"/>
 	</beans:bean>
 	
- 	<beans:bean name="/hello.htm" class="au.usyd.elec5619.web.RetailerController">
+<!--  	<beans:bean name="/hello.htm" class="au.usyd.elec5619.web.RetailerController">
 		<beans:property name="retailerManager" ref="retailerManager"/>
 	</beans:bean> 
-	
+ 	<beans:bean name="/login" class="au.usyd.elec5619.web.HelloController">
+		<beans:property name="loginManager" ref="loginManager"/>
+	</beans:bean> 	 -->
 	
 </beans:beans>
