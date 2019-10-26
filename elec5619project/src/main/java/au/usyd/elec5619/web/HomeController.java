@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-import au.usyd.elec5619.service.RetailerManager;
+import au.usyd.elec5619.service.ComparisonDAOInt;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -28,7 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	private RetailerManager retailerManager;
+	//private ComparisonDAOInt retailerManager;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -47,26 +47,5 @@ public class HomeController {
 		return "home";
 	}
 	
-	/*
-	 * @RequestMapping(value = "/hello", method = RequestMethod.GET) public
-	 * ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse
-	 * response) throws ServletException,IOException { String now = (new
-	 * Date()).toString(); //String products_val
-	 * =(this.productManager.getProducts()).toString();
-	 * logger.info("Returning hello view with " + now);
-	 * //logger.info("Returning hello view with " + products_val); //return new
-	 * ModelAndView("hello", "now", now); Map<String, Object> myModel = new
-	 * HashMap<String, Object>(); myModel.put("now",now);
-	 * logger.info("getting to issue"); myModel.put("retailer",
-	 * this.retailerManager.getRetailers());
-	 * 
-	 * //return new ModelAndView("WEB-INF/views/hello.jsp", "model", myModel);
-	 * return new ModelAndView("hello", "model", myModel);
-	 * 
-	 * }
-	 * 
-	 * public void setRetailerManager(RetailerManager retailerManager) {
-	 * logger.info("setting the retailer_manager"); this.retailerManager =
-	 * retailerManager; }
-	 */
+	
 }

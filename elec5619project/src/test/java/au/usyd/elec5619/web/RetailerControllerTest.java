@@ -11,7 +11,7 @@ public class RetailerControllerTest extends TestCase
 {
 	public void testHandleRequestView() throws Exception{
 		
-		RetailerController controller= new RetailerController();
+		WishlistComparisonController controller= new WishlistComparisonController();
 		controller.setRetailerManager(new RetailerManagerService());
 		ModelAndView modelAndView = controller.handleRequest(null, null);
 		assertEquals("hello", modelAndView.getViewName());
