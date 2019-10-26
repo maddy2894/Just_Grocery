@@ -1,61 +1,98 @@
 package au.usyd.elec5619.domain;
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.*;
+
+@Entity
+@Table(name="auth_register")
 public class user implements Serializable {
-	private String username;
-	private String password;
-	private String email_id;
-	private String first_name;
-	private String last_name;
-	private double postcode;
-	private double mobile_no;
-	
-	public String getUsername()
-	{	
-		return this.username;
-	}
-	public void setUsername (String username)
-	{
-		this.username=username;
-	}
-	public String getPassword()
-	{	
-		return password;
-	}
-	public void setPassword (String password)
-	{
-		this.password=password;
-	}
-	public String getEmail_id()
-	{	
-		return email_id;
-	}
-	public void setEmail_id(String email_id)
-	{
-		this.email_id=email_id;
-	}
-	public String getFirst_name() {
-		return first_name;
-	}
-	public void setFirst_name(String first_name) {
-		this.first_name = first_name;
-	}
-	public String getLast_name() {
-		return last_name;
-	}
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
-	}
-	public double getPostcode() {
-		return postcode;
-	}
-	public void setPostcode(double postcode) {
-		this.postcode = postcode;
-	}
-	public double getMobile_no() {
-		return mobile_no;
-	}
-	public void setMobile_no(double mobile_no) {
-		this.mobile_no = mobile_no;
-	}
+
+@Id
+@GeneratedValue
+@Column(name="id")
+private int id;
+
+@Column(name="username")
+private String username;
+
+@Column(name="passwd")
+private String passwd;
+
+@Column(name="email_id")
+private String email_id;
+
+@Column(name="first_name")
+private String first_name;
+
+@Column(name="last_name")
+private String last_name;
+
+@Column(name="post_code")
+private int post_code;
+
+@Column(name="mobile_no")
+private String mobile_no;
+
+public int getId() {
+return id;
 }
+
+public void setId(int id) {
+this.id = id;
+}
+
+public String getUsername()
+{
+return this.username;
+}
+public void setUsername (String username)
+{
+this.username=username;
+}
+public String getPasswd()
+{
+return passwd;
+}
+public void setPasswd (String passwd)
+{
+this.passwd=passwd;
+}
+public String getEmail_id()
+{
+return email_id;
+}
+public void setEmail_id(String email_id)
+{
+this.email_id=email_id;
+}
+public String getFirst_name() {
+return first_name;
+}
+public void setFirst_name(String first_name) {
+this.first_name = first_name;
+}
+public String getLast_name() {
+return last_name;
+}
+public void setLast_name(String last_name) {
+this.last_name = last_name;
+}
+public int getPost_code() {
+return post_code;
+}
+public void setPost_code(int post_code) {
+this.post_code = post_code;
+}
+public String getMobile_no() {
+return mobile_no;
+}
+public void setMobile_no(String mobile_no) {
+this.mobile_no = mobile_no;
+}
+
+
+}
+

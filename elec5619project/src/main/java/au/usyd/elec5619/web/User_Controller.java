@@ -4,41 +4,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 import au.usyd.elec5619.domain.user;
+import au.usyd.elec5619.service.RetailerManager;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
+import org.springframework.stereotype.Controller;
+//import org.springframework.web.servlet.mvc.Controller;
 
-public class User_Controller implements Controller {
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	public ModelAndView handleRequest(HttpServletRequest arg0,
-			HttpServletResponse arg1) throws Exception {
-			String now = "hello";
-			List user_data = new ArrayList();
-			user_data.add("Shashank");
-			user_data.add("Jain");
-			user_data.add("1509sj@gmail.com");
-			user_data.add("asdfghjk");
-			user_data.add("U39 Hilts Road Strathfield");
-			user_data.add("2135");
-			user_data.add("9490263247");
-			logger.info("User-profile linked with controller" + user_data);
-			//System.out.println(user_data.get(4));
-			return new ModelAndView("user_profile", "user_data", user_data);
-			
-			}
-	@RequestMapping(value="/elec5619/user_profile",  method=RequestMethod.POST)
-	public void user_profile(user user) {
-		System.out.println("O am here!");
-		System.out.println(user.getFirst_name());
-		System.out.println(user.getLast_name());
+
+@Controller
+@RequestMapping(value="/**")
+public class User_Controller  {
+	/*
+	@Resource(name="retailerManager")
+	private RetailerManager retailerManager;
+	
+	@RequestMapping(value="/user_details")
+	public String getForm(Model uiModel ) {
 		
+		
+		System.out.println("In get method");
+		return "user_details";
 	}
 	
-}
+	@RequestMapping(value="/user_details", method=RequestMethod.POST)
+	public String addProduct(HttpServletRequest httpServletRequest) {
+		System.out.println("In post method");
+		user userdetails = new user();
+		userdetails.setFirst_name(httpServletRequest.getParameter("first_name"));
+		userdetails.setLast_name(httpServletRequest.getParameter("last_name"));
+		userdetails.setEmail_id(httpServletRequest.getParameter("email_id"));
+		
+		userdetails.setMobile_no(httpServletRequest.getParameter("mobile_no"));
+		userdetails.setPostcode(httpServletRequest.getParameter("postcode"));
+		
+		userdetails.setPassword(httpServletRequest.getParameter("password"));
+		
+		this.retailerManager.updateuserprofile(userdetails);
+		
+		
+		return "redirect:/user_details";*/
+	}

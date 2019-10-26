@@ -5,15 +5,14 @@ import java.io.Serializable;
 
 public class admin_user_history implements Serializable {
 	
-	private String username;
+	private String email;
 	private Date logged_date;
-	private int count;
 	
-	public String getUserName() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
-	public void setUserName(String userName) {
-		username = userName;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public Date getLogged_date() {
 		return logged_date;
@@ -21,10 +20,6 @@ public class admin_user_history implements Serializable {
 	public void setLogged_date(Date logged_date) {
 		this.logged_date = logged_date;
 	}
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
-	}
+	
+	
 }

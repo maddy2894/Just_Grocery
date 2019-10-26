@@ -20,7 +20,7 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-	<beans:bean name="/user_profile.htm" class="au.usyd.elec5619.web.User_Controller"/>
+	<beans:bean name="/user.htm" class="au.usyd.elec5619.web.User_Controller"/>
 	<context:component-scan base-package="au.usyd.elec5619.web" />
 	
 	

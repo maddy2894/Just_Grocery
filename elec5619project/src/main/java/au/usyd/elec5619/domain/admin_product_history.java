@@ -2,38 +2,41 @@ package au.usyd.elec5619.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name="admin_product_history")
 public class admin_product_history implements Serializable{
-	
-	private int product_list_id;
+	@Id
+	@GeneratedValue
+	@Column(name="serachID")
+	private double searchID;
+	@Column(name="product")
+	private int product;
+	@Column(name="retailer_tag")
 	private String retailer_tag;
-	private String location;
-	private int count;
+	@Column(name="searched_date")
 	private Date searched_date;
-	
-	public int getProduct_list_id() {
-		return product_list_id;
+	public double getSearchID() {
+		return searchID;
 	}
-	public void setProduct_list_id(int product_list_id) {
-		this.product_list_id = product_list_id;
+	public void setSearchID(double searchID) {
+		this.searchID = searchID;
+	}
+	public int getProduct() {
+		return product;
+	}
+	public void setProduct(int product) {
+		this.product = product;
 	}
 	public String getRetailer_tag() {
 		return retailer_tag;
 	}
 	public void setRetailer_tag(String retailer_tag) {
 		this.retailer_tag = retailer_tag;
-	}
-	public String getLocation() {
-		return location;
-	}
-	public void setLocation(String location) {
-		this.location = location;
-	}
-	public int getCount() {
-		return count;
-	}
-	public void setCount(int count) {
-		this.count = count;
 	}
 	public Date getSearched_date() {
 		return searched_date;
@@ -42,5 +45,5 @@ public class admin_product_history implements Serializable{
 		this.searched_date = searched_date;
 	}
 	
-	
+		
 }
