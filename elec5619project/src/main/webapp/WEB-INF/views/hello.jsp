@@ -14,7 +14,7 @@
 		<P> The time on the server is ${model.now}. </P>
 		<h3>Product Prices are:</h3>
 		<c:forEach items="${model.retailers}" var="prod">
-		<c:out value="${prod.price_date}"/><i>||||<c:out value="${prod.product_id}"/></i><i>||||<c:out value="${prod.retailer_id}"/></i><i>||||<c:out value="${prod.product_name}"/></i><i>||||<c:out value="${prod.price}"/></i><br><br>
+		<c:out value="${prod.price_date}"/><i>||||<c:out value="${prod.product_id}"/></i><i>||||<c:out value="${prod.product_name}"/></i><i>||||<c:out value="${prod.price}"/></i><br><br>
 		</c:forEach>
 	</div>
 </body>

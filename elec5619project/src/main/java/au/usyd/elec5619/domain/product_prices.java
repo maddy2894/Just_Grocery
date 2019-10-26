@@ -5,7 +5,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="product_prices_new")
+@Table(name="product_prices")
 public class product_prices implements Serializable {
 	@Id
 	@GeneratedValue
@@ -15,13 +15,25 @@ public class product_prices implements Serializable {
 	private Date price_date;
 	@Column(name="product_id")
 	private int product_id;
-	@Column(name="retailer_id")
-	private int retailer_id;
+	//@JoinColumn(name="product_prices_v")
+	@Column(name="category")
+	private String category;
+	
+	@OneToOne
+	private retailer retailer;
+	
 	@Column(name="product_name")
 	private String product_name;
 	@Column(name="price")
 	private double price;
 	
+
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public Date getPrice_date() {
 		return price_date;
 	}
@@ -34,12 +46,7 @@ public class product_prices implements Serializable {
 	public void setProduct_id(int product_id) {
 		this.product_id = product_id;
 	}
-	public int getRetailer_id() {
-		return retailer_id;
-	}
-	public void setRetailer_id(int retailer_id) {
-		this.retailer_id = retailer_id;
-	}
+	
 	public String getProduct_name() {
 		return product_name;
 	}
@@ -52,5 +59,18 @@ public class product_prices implements Serializable {
 	public void setPrice(double price) {
 		this.price = price;
 	}
+	public retailer getRetailer() {
+		return retailer;
+	}
+	public void setRetailer(retailer retailer) {
+		this.retailer = retailer;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
 	
 }

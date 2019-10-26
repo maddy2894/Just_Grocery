@@ -14,14 +14,19 @@
 		<div class="card-deck">
 			<c:forEach items="${model.products}" var="prod">
 			  <div class="card" style="min-width: 300px; margin-bottom: 5px;">
-			    <img src="<c:url value="/resources/images/bread.jpg" />" style="width: 99%; margin-left:1px;" class="card-img-top" alt="...">
+			    <img src="https://oof-project.s3-ap-southeast-2.amazonaws.com/chips.jpg" style="width: 99%; margin-left:1px;" class="card-img-top" alt="...">
 			    <div class="card-body">
 			      <h3 class="card-title"><c:out value="${prod.product_name}"/></h3>
-			      <h5>Price: <c:out value="${prod.price}"/> </h5>
-			      <p>Retailer Id: <c:out value="${prod.retailer_id}"/> </p>
+			      <h5>Price: $<c:out value="${prod.price}"/> </h5>
+			      <c:choose>
+					   <c:when test="${prod.retailer.name.equals('Woolworths')}"><p style="color: green"><c:out value="${prod.retailer.name}"/> </p></c:when>
+					   <c:when test="${prod.retailer.name.equals('Coles')}"><p style="color: red"><c:out value="${prod.retailer.name}"/> </p></c:when>
+					   <c:when test="${prod.retailer.name.equals('Aldi')}"><p style="color: blue"><c:out value="${prod.retailer.name}"/> </p></c:when>
+				  </c:choose>
 			    </div>
 			    <div class="card-footer">
-			      <small class="text-muted">Product Id:<c:out value="${prod.product_id}"/></small>
+			      <small>Location: <c:out value="${prod.retailer.location}"/> </small>
+			      <button style="float:right;" type="submit" class="btn btn-outline-dark"><span class="fa fa-plus"></span></button>
 			    </div>
 			  </div>
 			

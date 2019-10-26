@@ -18,6 +18,7 @@
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
@@ -70,7 +71,7 @@
 	</beans:bean> --> 
 	
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-
+	<context:component-scan base-package="au.usyd.elec5619.web" />
 	<mvc:annotation-driven /> 
 	
 </beans:beans>

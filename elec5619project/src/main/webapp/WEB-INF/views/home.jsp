@@ -6,6 +6,54 @@
 		<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
+		<script type="text/javascript" 
+			src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script type="text/javascript" 
+			src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+		<style>
+			#error {
+			color: red;
+			}
+		</style>
+		<script>
+			function validateSearch() {
+				var searchInput = document.getElementById("search");
+				var productList = ["tomato", "milk", "bread"];
+				if (productList.indexOf(searchInput.value.toLowerCase()) > -1) {
+					return true;
+				} else {
+					var div = document.getElementById("error")
+					while( div.firstChild ) {
+					    div.removeChild( div.firstChild );
+					}
+					div.appendChild( document.createTextNode("Sorry, we do not have any details about the product") );
+					return false;
+				}
+			}
+			
+			window.onload = function() {
+				var searchInput = document.getElementById("search");
+				searchInput.onblur = function() {
+					if (searchInput.value == "" || searchInput.value == " ") {
+						var div = document.getElementById("error")
+						while( div.firstChild ) {
+						    div.removeChild( div.firstChild );
+						}
+						div.appendChild( document.createTextNode("Please enter a product") );
+					}
+				}
+				searchInput.onfocus = function() {
+					if (searchInput.value != "" || searchInput.value != " ") {
+						var div = document.getElementById("error")
+						while( div.firstChild ) {
+						    div.removeChild( div.firstChild );
+						}	
+					}
+				}
+			}
+		</script>
 		<title>Home</title>
 	</head>
 	<body>
@@ -27,11 +75,32 @@
 		        <a class="nav-link" href="/elec5619/basket">Basket</a>
 		      </li>
 		    </ul>
-		    <form class="form-inline my-2 my-lg-0">
-		      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+		    <form action="product/search" method="post" modelAttribute="search" onsubmit="return validateSearch()" class="form-inline my-2 my-lg-0">
+		      <input class="form-control mr-sm-2" path="search" name="search" id="search" placeholder="Search" aria-label="Search"/>
 		      <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
+		      <br/>
 		    </form>
+		    <div id="error"> </div>
 		  </div>
 		</nav>
+		
+		<script type="text/javascript">
+		$( function() {
+		    var availableProducts = [
+		      "Milk",
+		      "Bread",
+		      "Tomato",
+		      "Tim Tam",
+		      "Potato",
+		      "Smiths Thinly Cut",
+		      "KitKat",
+		      "CCs Doritos",
+		      "Cheese",
+		    ];
+		    $( "#search" ).autocomplete({
+		      source: availableProducts
+		    });
+		  } );
+		</script>
 	</body>
 </html>
