@@ -13,10 +13,10 @@ public class wishlist_tests extends TestCase{
 	}
 
 	public void testSetAndGetUsername() {
-		String test_username = "Frank";
-		assertNull(wish_list.getUsername());
-		wish_list.setUsername(test_username);
-		assertEquals(test_username,wish_list.getUsername());
+		String test_username = "Frank@gmail.com";
+		assertNull(wish_list.getEmail_id());
+		wish_list.setEmail_id(test_username);
+		assertEquals(test_username,wish_list.getEmail_id());
 	}
 	public void testSetAndGetWishlist_name() {
 		String test_wishlistname = "JustGrocery";
@@ -26,7 +26,7 @@ public class wishlist_tests extends TestCase{
 	}
 	
 	public void testSetAndGetList_of_products() {
-		String[] test_listofproducts = {"Milk","Yogurt"};
+		String test_listofproducts = "Milk,Yogurt";
 		assertNull(wish_list.getList_of_products());
 		wish_list.setList_of_products(test_listofproducts);
 		assertEquals(test_listofproducts,wish_list.getList_of_products());

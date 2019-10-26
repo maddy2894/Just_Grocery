@@ -26,43 +26,48 @@ public class wish_list implements Serializable {
 		this.id = id;
 	}
 	
-	@Column(name="username")
-	String username;
+	@Column(name="email_id")
+	String email_id;
 	
+	public String getEmail_id() {
+		return email_id;
+	}
+	public void setEmail_id(String email_id) {
+		this.email_id = email_id;
+	}
+
 	@Column(name="wishlist_name")
+	public
 	String wishlist_name;
 
 	@Column(name="list_of_products")
-	String[] list_of_products;
+	public
+	String list_of_products;
 	
 	@Column(name="updated_time")
 	Date updated_time;
 
 	@Column(name="is_active")
+	public
 	String is_active;
 	
-	public String getUsername() {
-		return username;
-	}
 	public Date getUpdated_time() {
 		return updated_time;
 	}
 	public void setUpdated_time(Date updated_time) {
 		this.updated_time = updated_time;
 	}
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	
 	public String getWishlist_name() {
 		return wishlist_name;
 	}
 	public void setWishlist_name(String wishlist_name) {
 		this.wishlist_name = wishlist_name;
 	}
-	public String[] getList_of_products() {
+	public String getList_of_products() {
 		return list_of_products;
 	}
-	public void setList_of_products(String[] test_listofproducts) {
+	public void setList_of_products(String test_listofproducts) {
 		this.list_of_products = test_listofproducts;
 	}
 	public String getIs_active() {

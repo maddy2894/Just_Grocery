@@ -8,15 +8,22 @@
 <head>
 	<title>Home Page</title>
 	<link href="${pageContext.request.contextPath }/resources/css/createwish_list-ps.css" rel="stylesheet">	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css">
+	 <style>
+	 #product{
+	border-radius: 25px;
+	background: lightslategrey;
+	padding: 20px;
+	width: 200px;
+	height: 61px;
+	color:white;
+}
 	 
+	 </style>
 	<script>
 	var products = [];
-	var same=0; 
+	 
 	function addToCart(selectedValue ){
+		var same=0;
 		console.log(selectedValue);
 		
 		if(products.length===0){
@@ -27,11 +34,11 @@
 			
 			for(var i=0;i<products.length;i++){
 				if(products[i]===selectedValue || selectedValue==="products" ||selectedValue==="Select"){
-					console.log("products[i]",products[i]);
+					console.log("products",products[i]);
 					console.log("selectedValue",selectedValue);
 					same=1;
-				}	
-				else{
+					break;
+				} else{
 					same=0;
 				}
 			}
@@ -45,32 +52,26 @@
 		}
 		console.log('products',products); 
 		document.getElementsByClassName("form-control")[1].innerHTML=products;
-		
-	
-
-	
-		
 
   }
 
+	
 	</script>	
 </head>
 <body>
 
-<form action="savedWishlist" method="post" id="myForm">
+<form action="saveWishlist" method="post" id="myForm">
 <div class="wishlistName">
 <label>Enter Wishlist's name:</label>
 <input type="text" id="wishlistname" name="wishlistName" >
 </div>
 <br/>
 
- 
-  <select name="product" id="product" onChange="document.getElementById('selectedValue').innerHTML = this.value;">
-   <option value="Select">Select products..</option>
+  <select name="product" id="product"  onChange="document.getElementById('selectedValue').innerHTML = this.value;">
+   <option value="Select">Select Products..</option>
   <c:forEach items="${model.retailers}" var="product">
     <option value="${product}">${product}</option>
-</c:forEach>
-   
+</c:forEach>  
 </select >
 
 <div>Selected Product: <span id="selectedValue"></span></div>
@@ -84,17 +85,11 @@
   <textarea class="form-control" name="form-control" aria-label="With textarea"></textarea>
 </div>
 
+
+<label>${model.retailers}</label>
+
 <input type="submit" value="submit" >
 </form>
-
-<table>
-
-
-
-</table>
-
-
-
 
 
 

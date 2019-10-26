@@ -21,7 +21,7 @@
 		        <a class="nav-link" href="/elec5619">Home</a>
 		      </li>
 		      <li class="nav-item">
-		        <a class="nav-link" href="/elec5619/hello">WishList</a>
+		        <a class="nav-link" href="/elec5619/wishlist/">WishList</a>
 		      </li>
 		       <li class="nav-item">
 		        <a class="nav-link" href="/elec5619/basket">Basket</a>

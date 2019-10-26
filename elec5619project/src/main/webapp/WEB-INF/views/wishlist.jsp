@@ -1,5 +1,7 @@
 <%@ include file="/WEB-INF/views/include.jsp" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page session="false" %>
 <%@ include file="/WEB-INF/views/bootstrap.jsp" %>
 <html>
@@ -13,11 +15,38 @@
 	
 </head>
 <body>
-  
-   <h2 class="name">Just Grocery</h2>
-   <h3 class="name">Wishlist</h3>
+  <div class="container">
+   <h2 class="name">WishList</h2>
    <form action="newWishlist" method="post">
-   <input type="button" onclick="location.href='/elec5619/wishlist/newWishlist'" value="+New Wishlist">
+   
+    <input type="button" class="btn btn-outline-dark" onclick="location.href='/elec5619/wishlist/newWishlist'" value="+New Wishlist">
+
    </form>
+   	
+   	<form action="editWishList", method="post">
+     <div class="card-deck" style="width:100%">
+     <c:forEach items="${model.wishlists}" var="wishlist">
+     
+     <%-- <c:out value="${wishlist.wishlist_name}"/> --%>
+     <div class="card" style="width: 18rem;">
+  		<img src="<c:url value="/resources/images/cart.png" />" style="width: 99%; margin-left:1px;" class="card-img-top" alt="...">
+  	 <div class="card-body">
+     <h5 name="wishlist_name" class="card-title">${wishlist.wishlist_name}</h5>
+     
+     <input type="hidden" id="newfield" name="wishlist_name" value="${wishlist.wishlist_name}"/>
+     <p class="card-text">${wishlist.list_of_products }</p>
+     
+   	 <input type="submit" class="btn btn-outline-dark"  value="Modify or Delete">
+  		
+ 	 	</div>
+		</div>
+     
+   
+   </c:forEach>
+   </div>
+   </form>
+  
+   
+   </div>
 </body>
 </html>
