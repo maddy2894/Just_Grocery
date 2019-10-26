@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,6 +32,8 @@ public class WishlistComparisonController
 	  @Resource(name="comparisonServiceLayer")
   	  private ComparisonServiceInt comparisonServiceLayer;
 	
+	  
+	  
 	  @RequestMapping(value = "/wishListComparison", method = RequestMethod.GET)
 	  public ModelAndView handleRequest_new_again(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
 	  Map<Object, Object> myModel = new HashMap<Object, Object>();

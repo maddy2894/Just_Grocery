@@ -13,8 +13,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-
+import javax.servlet.http.HttpSession;
 
 import au.usyd.elec5619.service.ComparisonDAOInt;
 
@@ -34,7 +33,7 @@ import org.springframework.stereotype.Controller;
 import javax.annotation.*;
 
 @Controller
-@RequestMapping(value = "/elec5619/home/**")
+@RequestMapping(value = "/home/**")
 public class HomeController {
 
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
@@ -52,26 +51,41 @@ public class HomeController {
 	  return "home"; }
 	 
 	  @RequestMapping(value = "/login", method = RequestMethod.POST) 
-	  public ModelAndView addUserDetails(HttpServletRequest httpServletRequest) {
-	  
-	  System.out.println("im in post login");
-	  
-	  String email;
-	  email=httpServletRequest.getParameter("email_id");
-	  String password=httpServletRequest.getParameter("passwd");
-	  String logged_in=this.loginService.LoginValidator(email,password);
-	  System.out.println(logged_in);
-	  
-	  Map<String,Object> myModel=new HashMap<String,Object>();
-	  myModel.put("logged", logged_in);
-	  if(logged_in.equals("success"))
-	  {
-		  return new ModelAndView("logsuccess");
+	  public String addUserDetails(HttpServletRequest httpServletRequest, HttpSession session) {
+		  System.out.println("im in post login");
+		  
+		  String email;
+		  email=httpServletRequest.getParameter("email_id");
+		  String password=httpServletRequest.getParameter("passwd");
+		  String logged_in=this.loginService.LoginValidator(email,password);
+		  System.out.println(logged_in);
+		  
+		  Map<String,Object> myModel=new HashMap<String,Object>();
+		  myModel.put("logged", logged_in);
+		  if(logged_in.equals("success"))
+		  {
+			  session.setAttribute("user", email);
+			  return "redirect:/wishListComparison";  //new ModelAndView("logsuccess");
+		  }
+		  else {
+			  return  "redirect:/home/login";     //new ModelAndView("login","model",myModel);
+		  }
 	  }
-	  else {
-		  return new ModelAndView("home","model",myModel);
-	  }
-}
+	/*
+	 * public ModelAndView addUserDetails(HttpServletRequest httpServletRequest) {
+	 * 
+	 * System.out.println("im in post login");
+	 * 
+	 * String email; email=httpServletRequest.getParameter("email_id"); String
+	 * password=httpServletRequest.getParameter("passwd"); String
+	 * logged_in=this.loginService.LoginValidator(email,password);
+	 * System.out.println(logged_in);
+	 * 
+	 * Map<String,Object> myModel=new HashMap<String,Object>();
+	 * myModel.put("logged", logged_in); if(logged_in.equals("success")) { return
+	 * new ModelAndView("logsuccess"); } else { return new
+	 * ModelAndView("home","model",myModel); } }
+	 */
 	 
 	 
 	 // @RequestMapping(value="/register", method= RequestMethod.POST)
