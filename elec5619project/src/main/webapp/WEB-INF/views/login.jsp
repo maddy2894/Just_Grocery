@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/views/home.jsp" %>
+<%@ include file="/WEB-INF/views/include.jsp" %>
 <html>   
 <head>
 <title>Home</title>
