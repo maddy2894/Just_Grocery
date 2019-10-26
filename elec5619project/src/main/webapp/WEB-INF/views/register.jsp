@@ -91,7 +91,7 @@
 	
 	var confirmpass = document.getElementById("confirmid");
 	confirmpass.onblur = function() {
-		if (confirmpass.value == "" || confirmpass.value == " " || confirmpass.value == password.value) {
+		if (confirmpass.value == "" || confirmpass.value == " " || confirmpass.value != password.value) {
 			var div = document.getElementById("error4")
 			while( div.firstChild ) {
 			    div.removeChild(div.firstChild);
@@ -100,7 +100,7 @@
 		}
 	}
 	confirmpass.onfocus = function() {
-		if (confirmpass.value != "" || confirmpass.value != " " || confirmpass.value == password.value) {
+		if (confirmpass.value != "" || confirmpass.value != " " || confirmpass.value != password.value) {
 			var div = document.getElementById("error4")
 			while( div.firstChild ) {
 			    div.removeChild(div.firstChild);
