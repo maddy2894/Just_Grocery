@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,7 +23,10 @@ import org.springframework.stereotype.Controller;
 import au.usyd.elec5619.service.ProductService;
 import javax.annotation.*;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import au.usyd.elec5619.domain.product_prices;
+import au.usyd.elec5619.domain.user;
 import au.usyd.elec5619.domain.admin_product_history;
 
 @Controller
@@ -30,12 +34,16 @@ import au.usyd.elec5619.domain.admin_product_history;
 public class ProductController{
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
+	
+	
 	@Resource(name = "productService")
 	private ProductService productService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView index() {
-
+	public ModelAndView index(HttpSession session) {
+		
+		Object test = session.getAttribute("user");
+		logger.info(" "+ test.toString());
 		product_prices search = new product_prices();
 
 		return new ModelAndView("product", "search", search);
