@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import au.usyd.elec5619.service.ComparisonDAOInt;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,66 +31,51 @@ import org.springframework.stereotype.Controller;
 import javax.annotation.*;
 
 @Controller
-@RequestMapping(value = "/home/**")
-public class HomeController {
+@RequestMapping(value = "/login/**")
+public class LoginController {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
 	@Resource(name="loginManager")
 	private LoginManager loginManager;
 
 	@Resource(name="loginService")
 	private LoginService loginService;
-
+	
 	  @RequestMapping(value = "/")
 	  public String addUserDetails(Model uiModel)
 	  { System.out.println("im in get login");
-	  return "home"; }
+	  return "login"; }
 	 
 	  @RequestMapping(value = "/login", method = RequestMethod.POST) 
-	  public String addUserDetails(HttpServletRequest httpServletRequest, HttpSession session) {
-		  System.out.println("im in post login");
-		  
-		  String email;
-		  email=httpServletRequest.getParameter("email_id");
-		  String password=httpServletRequest.getParameter("passwd");
-		  String logged_in=this.loginService.LoginValidator(email,password);
-		  System.out.println(logged_in);
-		  
-		  Map<String,Object> myModel=new HashMap<String,Object>();
-		  myModel.put("logged", logged_in);
-		  if(logged_in.equals("success"))
-		  {
-			  session.setAttribute("user", email);
-			  return "redirect:/wishListComparison";  //new ModelAndView("logsuccess");
-		  }
-		  else {
-			  return  "redirect:/home/login";     //new ModelAndView("login","model",myModel);
-		  }
+	  public ModelAndView addUserDetails(HttpServletRequest httpServletRequest, HttpSession session) {
+	  
+		 
+	  System.out.println("im in post login");
+	  
+	  String email;
+	  email=httpServletRequest.getParameter("email_id");
+	  String password=httpServletRequest.getParameter("passwd");
+	  String logged_in=this.loginService.LoginValidator(email,password);
+	  System.out.println(logged_in);
+	  
+	  Map<String,Object> myModel=new HashMap<String,Object>();
+	  myModel.put("logged", logged_in);
+	  if(logged_in.equals("success"))
+	  {
+		  session.setAttribute("user", email);
+		  return new ModelAndView("logsuccess");
 	  }
-	/*
-	 * public ModelAndView addUserDetails(HttpServletRequest httpServletRequest) {
-	 * 
-	 * System.out.println("im in post login");
-	 * 
-	 * String email; email=httpServletRequest.getParameter("email_id"); String
-	 * password=httpServletRequest.getParameter("passwd"); String
-	 * logged_in=this.loginService.LoginValidator(email,password);
-	 * System.out.println(logged_in);
-	 * 
-	 * Map<String,Object> myModel=new HashMap<String,Object>();
-	 * myModel.put("logged", logged_in); if(logged_in.equals("success")) { return
-	 * new ModelAndView("logsuccess"); } else { return new
-	 * ModelAndView("home","model",myModel); } }
-	 */
+	  else {
+		  return new ModelAndView("login","model",myModel);
+	  }
+}
 	 
 	 
 	 // @RequestMapping(value="/register", method= RequestMethod.POST)
 	
 	  
 	
-
 	  @RequestMapping(value="/register", method= RequestMethod.GET) public String
 	  register(Locale locale,Model model) {
 	  logger.info("Welcome register! {}. ",locale); return "register"; }

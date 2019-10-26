@@ -18,7 +18,7 @@ public class product_prices implements Serializable {
 	@Column(name="product_id")
 	private int product_id;
 	//@JoinColumn(name="product_prices_v")
-	
+
 	@Column(name="category")
 	private String category;
 	
@@ -31,17 +31,17 @@ public class product_prices implements Serializable {
 	@Column(name="price")
 	private double price;
 	
+
 	@Column(name="product_image")
 	private String product_image;
 	
 	public int getId() {
 		return id;
 	}
-	
 	public void setId(int id) {
 		this.id = id;
 	}
-	
+
 	public Date getPrice_date() {
 		return price_date;
 	}
@@ -73,19 +73,15 @@ public class product_prices implements Serializable {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	
 	public retailer getRetailer() {
 		return retailer;
 	}
-	
 	public void setRetailer(retailer retailer) {
 		this.retailer = retailer;
 	}
-	
 	public String getCategory() {
 		return category;
 	}
-	
 	public void setCategory(String category) {
 		this.category = category;
 	}
@@ -100,3 +96,4 @@ public class product_prices implements Serializable {
 	
 	
 }
+

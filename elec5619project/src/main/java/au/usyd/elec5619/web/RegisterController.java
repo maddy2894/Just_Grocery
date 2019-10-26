@@ -21,7 +21,7 @@ import au.usyd.elec5619.service.LoginManager;
 import org.springframework.stereotype.Controller;
 
 @Controller
-@RequestMapping(value = "elec5619/home/register/**")
+@RequestMapping(value = "/register/**")
 public class RegisterController {
 
 	private static final Logger logger = LoggerFactory.getLogger(RegisterController.class);
@@ -37,34 +37,31 @@ public class RegisterController {
 	  }
 	 
 	
-	@RequestMapping(value = "/register", method = RequestMethod.POST) 
+
+	@RequestMapping(value = "/home", method = RequestMethod.POST) 
 	  public String addUserDetails(HttpServletRequest httpServletRequest) {
 	  
 	  String pass;
 	  System.out.println("im in post register"); 
 	  user us1 = new user();
-		/* us1.setUsername(httpServletRequest.getParameter("username")); */
+
 	  us1.setPasswd(httpServletRequest.getParameter("passwd"));
 	  us1.setEmail_id(httpServletRequest.getParameter("email_id"));
-		/* us1.setPost_code(httpServletRequest.getParameter("post_code"));*/
 	  us1.setFirst_name(httpServletRequest.getParameter("first_name"));
 	  us1.setLast_name(httpServletRequest.getParameter("last_name"));
-	/* us1.setMobile_no(httpServletRequest.getParameter("mobile_no")); */
-		 
-	 //System.out.println(us1.getUsername());
 	 System.out.println(us1.getPasswd());
 	 System.out.println(us1.getEmail_id());
-	 //System.out.println(us1.getPost_code());
 	 System.out.println(us1.getFirst_name());
 	 System.out.println(us1.getLast_name());
-	 //System.out.println(us1.getMobile_no());
+
 	 
 	  this.loginManager.addRegDetails(us1); 
 	  return "regsuccess"; 
 	  }
 	
-	  public void setLoginManager(LoginManager loginManager) { this.loginManager =
-	  loginManager; }
-	 
-	 
+
+	  public void setLoginManager(LoginManager loginManager) { 
+		  this.loginManager = loginManager; 
+		  }
+ 
 }

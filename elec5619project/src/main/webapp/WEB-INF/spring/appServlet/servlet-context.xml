@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
@@ -17,64 +18,27 @@
 
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
 	<context:component-scan base-package="au.usyd.elec5619" />
+ 	<!-- <beans:bean id="loginManager" class="au.usyd.elec5619.service.DbLoginManager">
+	</beans:bean> --> 
+	
 	
 
- 		<beans:bean id="retailerManager" class="au.usyd.elec5619.service.ComparisonDAO">
-
-<!--  		<beans:bean id="loginManager" class="au.usyd.elec5619.service.DbLoginManager">
- -->
-	<!-- <beans:property name="retailers">
-	<beans:list>
-		<beans:ref bean="retailer1"/>
-		<beans:ref bean="retailer2"/>
-		<beans:ref bean="retailer3"/>
-	</beans:list>
-	</beans:property> -->
-	</beans:bean> 
-	
-	<!-- <beans:bean id="retailer1" class="au.usyd.elec5619.domain.retailer">
-	<beans:property name="id" value="1"/>
-	<beans:property name="name" value="Woolworths"/>
-	<beans:property name="contact" value="0478757655"/>
-	<beans:property name="tag" value="wow"/>
-	<beans:property name="location" value="CBD"/>
-	<beans:property name="post_code" value="2008"/>
-	</beans:bean>
-
-	<beans:bean id="retailer2" class="au.usyd.elec5619.domain.retailer">
-	<beans:property name="id" value="1"/>
-	<beans:property name="name" value="Coles"/>
-	<beans:property name="contact" value="0478757655"/>
-	<beans:property name="tag" value="col"/>
-	<beans:property name="location" value="CBD"/>
-	<beans:property name="post_code" value="2008"/>
-	</beans:bean>
-	
-	<beans:bean id="retailer3" class="au.usyd.elec5619.domain.retailer">
-	<beans:property name="id" value="1"/>
-	<beans:property name="name" value="Aldi"/>
-	<beans:property name="contact" value="0478757655"/>
-	<beans:property name="tag" value="ald"/>
-	<beans:property name="location" value="CBD"/>
-	<beans:property name="post_code" value="2008"/>
-	</beans:bean>
-	 -->
 	<beans:bean id ="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<beans:property name="basename" value="messages"/>
 	</beans:bean>
 	
-<!--  	<beans:bean name="/hello.htm" class="au.usyd.elec5619.web.RetailerController">
+ 	<!-- <beans:bean name="/hello.htm" class="au.usyd.elec5619.web.RetailerController">
 		<beans:property name="retailerManager" ref="retailerManager"/>
-
-	</beans:bean>  -->
+	</beans:bean> --> 
 	
-
- <!-- 	</beans:bean>  -->
-
+	<mvc:resources mapping="/resources/**" location="/resources/" />
+	<context:component-scan base-package="au.usyd.elec5619.web" />
+	<mvc:annotation-driven /> 
 	
 </beans:beans>
