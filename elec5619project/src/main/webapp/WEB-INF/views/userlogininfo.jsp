@@ -106,24 +106,10 @@ chart1.render();
 </head>
 <body>
 <div style="margin-top: 90px">
-<table align="center" width="80px" >
-<tr>
-<td>
-<form action="add_product" method="get">
- <input class="btn btn-outline-dark" type="submit" name="add_product" style="margin-right: 190px" value="Add Product" disabled/>
- </form>
-</td>
-<td></td>
-<td>
-  <form action="add_retailer" method="get">
- <div><input class="btn btn-outline-dark" type="submit" name="add_retailer" value="Add Retailer" disabled	/></div>
- </form>
-</td>
-</tr>
-</table>
 
 
 <div class= "container">
+<h1 style="text-align: center; font-size:24px">Admin View</h1>
 <div style="width: 100%; display: table; margin-top: 90px;">
 	    <div style="display: table-row">
 		<!-- <div id="chartContainer" style="display: table-cell; width: 50%;"></div> -->
