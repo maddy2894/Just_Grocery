@@ -127,15 +127,15 @@
 	
 </head>
 <body>
-	<div class="container">
-			<div class="productStyle">
-						<form action="product/search" method="post" onsubmit="return validateSearch()" class="form-inline my-2 my-lg-0">
-						      <input class="form-control mr-sm-2" name="search" id="search" placeholder="Search" aria-label="Search"/>
-						      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
-						      <br/>
-					    </form>
-					    <div id="error"> </div>
-		    </div>
+	<div class="container" style="margin-top:90px">
+	<div class="productStyle">
+		<form action="product/search" method="post" onsubmit="return validateSearch()" class="form-inline my-2 my-lg-0">
+		      <input class="form-control mr-sm-2" name="search" id="search" placeholder="Search" aria-label="Search"/>
+		      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+		      <br/>
+	    </form>
+	    <div id="error"> </div>
+    </div>
 
 	<form action="saveEditedWishList" method="post" id="myForm" onsubmit="return sub();">
 
@@ -184,7 +184,6 @@
 		<input type="submit"  style="margin-left: 460px;margin-top: 110px;" class="btn btn-outline-dark" value="Save WishList" >
         <div id="errorlogin" style="text-align: center"></div>
 	</form>
-
 	</div>
 	<script type="text/javascript">
 		$( function() {
