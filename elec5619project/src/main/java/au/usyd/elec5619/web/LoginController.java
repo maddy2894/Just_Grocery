@@ -13,6 +13,8 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,24 +31,24 @@ import org.springframework.stereotype.Controller;
 import javax.annotation.*;
 
 @Controller
-@RequestMapping(value = "/elec5619/home/**")
-public class HomeController {
+@RequestMapping(value = "/**")
+public class LoginController {
 
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 
-	@Resource(name="loginManager")
-	private LoginManager loginManager;
+	  @Resource(name="loginManager")
+	  private LoginManager loginManager;
 
-	@Resource(name="loginService")
-	private LoginService loginService;
+	  @Resource(name="loginService")
+	  private LoginService loginService;
 	
 	  @RequestMapping(value = "/")
 	  public String addUserDetails(Model uiModel)
 	  { System.out.println("im in get login");
-	  return "home"; }
+	  return "login"; }
 	 
 	  @RequestMapping(value = "/login", method = RequestMethod.POST) 
-	  public ModelAndView addUserDetails(HttpServletRequest httpServletRequest) {
+	  public ModelAndView addUserDetails(HttpServletRequest httpServletRequest,  HttpSession session) {
 	  
 	  System.out.println("im in post login");
 	  
@@ -60,49 +62,20 @@ public class HomeController {
 	  myModel.put("logged", logged_in);
 	  if(logged_in.equals("success"))
 	  {
+		  session.setAttribute("user", email);
 		  return new ModelAndView("logsuccess");
 	  }
 	  else {
-		  return new ModelAndView("home","model",myModel);
+		  return new ModelAndView("login","model",myModel);
 	  }
 }
-	 
-	 
-	 // @RequestMapping(value="/register", method= RequestMethod.POST)
-	
-	  
-	
-	  @RequestMapping(value="/register", method= RequestMethod.GET) public String
-	  register(Locale locale,Model model) {
-	  logger.info("Welcome register! {}. ",locale); return "register"; }
-	 
-
-	/*
-	 * @RequestMapping(value = "/login", method = RequestMethod.POST)
-	 * 
-	 * public ModelAndView handleRequest(HttpServletRequest
-	 * request,HttpServletResponse response) { String
-	 * username=request.getParameter("username"); String
-	 * password=request.getParameter("password"); // String message;
-	 * 
-	 * logger.info(this.loginManager.LoginValid());
-	 * 
-	 * user user1= new user(); user1.setUsername(username);
-	 * user1.setPassword(password); if(username != null && !username.equals("") &&
-	 * username.equals("giridhar") && password !=null && !password.equals("") &&
-	 * password.equals("123")) { System.out.println("Username= " +
-	 * user1.getUsername()); //message = "Welcome " +username + "."; return "login";
-	 * } else { System.out.println("Password= " + user1.getPassword()); return
-	 * "login"; }
-	 * 
-	 * 
-	 * //System.out.println("Username= " + user1.getUsername());
-	 * //System.out.println("Password= " + user1.getPassword());
-	 * 
-	 * return new ModelAndView("login","user_det",this.loginManager.LoginValid()); }
-	 */
-
-	
+	 	
+	  @RequestMapping(value="/register", method= RequestMethod.GET) 
+	  public String register(Locale locale,Model model) {
+	  logger.info("Welcome register! {}. ",locale); 
+	  return "register"; 
+	  }
+		
 	  public void setLoginManager(LoginManager loginManager) { this.loginManager =
 	  loginManager; }
 	 
