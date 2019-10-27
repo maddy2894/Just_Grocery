@@ -19,6 +19,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -85,9 +86,38 @@ public class LoginController {
 	  logger.info("Welcome register! {}. ",locale); 
 	  return "register"; 
 	  }
-		
-	  public void setLoginManager(LoginManager loginManager) { this.loginManager =
-	  loginManager; }
+	  
+	  @RequestMapping(value="/forgotPassword/{usid}", method= RequestMethod.GET) 
+	  public String forgot_password(@PathVariable("usid") String usid, Locale locale,Model model, HttpSession session) {
+	  usid+=".com";
+	  String logged_in=this.loginService.checkUsername(usid);
+	  if(logged_in.equals("success"))
+	  {
+		  session.setAttribute("user", usid);
+		  return "forgotPassword";     //new ModelAndView("logsuccess");
+	  }
+	  else {
+		  return   "wrongUsername";   //new ModelAndView("login","model",myModel);
+	  }
+	  
+	  }
+	  
+	  @RequestMapping(value="/resetPassowrd", method=RequestMethod.POST)
+	  public String reset_password(HttpServletRequest httpServletRequest,  HttpSession session) {
+		  
+		  String password = httpServletRequest.getParameter("passwd");
+		  String email = session.getAttribute("user").toString();
+		  
+		  this.loginService.resetPassword(email, password);
+		  
+		  
+		  return "redirect:/";
+		  
+	  }
+
+	  public void setLoginManager(LoginManager loginManager) { 
+		  this.loginManager = loginManager; 
+	  }
 	 
 	  public void setLoginService(LoginService loginService) { this.loginService =
 			  loginService; }

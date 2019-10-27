@@ -58,6 +58,7 @@
 </head>
 	<body>
 	<div class="container">
+	<div style="margin-top: 90px">
 		<h3 align="center">
 			<b>Just Grocery</b>
 		</h3>
@@ -70,6 +71,7 @@
 	      <br/>
 	    </form>
 	    <div id="error"> </div>
+	    </div>
 	</div>
 	<script type="text/javascript">
 	$( function() {

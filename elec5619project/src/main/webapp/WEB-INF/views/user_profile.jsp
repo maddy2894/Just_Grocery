@@ -12,6 +12,8 @@
     </style>
   </head>
   <body>
+  <div class="container">
+  	<div style="margin-top: 90px;">
     <h3 align = "center">Just Grocery</h3>
     <br>
     <h3 align ="center">Profile Overview</h3>
@@ -64,5 +66,7 @@
       </tr>
     </table>
     </form>
+    </div>
+    </div>
   </body>
 </html>

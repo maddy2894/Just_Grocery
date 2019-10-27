@@ -39,6 +39,12 @@ public class ProductController{
 	@Resource(name = "productService")
 	private ProductService productService;
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String products() {
+
+		return "product";
+	}
+	
 	@RequestMapping(value = "/get_products", method = RequestMethod.GET, headers="Accept=*/*")
 	public List<String> getProductList(@RequestParam("term") String query) {
 
@@ -55,7 +61,6 @@ public class ProductController{
 	List<String> wishlists = productService.getWishlists(username);
 	searched_product.setProduct(searchedProduct);
 	searched_product.setSearched_date(now);
-	logger.info("loggerInfo" + this.productService.getProducts(searchedProduct, searched_product));
 	Map<String, Object> myModel = new HashMap<String, Object>();
 	myModel.put("now",now);
 	myModel.put("wishlists",wishlists);

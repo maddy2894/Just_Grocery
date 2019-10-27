@@ -108,7 +108,7 @@ chart3.render();
 </head>
 <body>
 <div class= "container">
-<div style="width: 100%; display: table;">
+<div style="width: 100%; display: table; margin-top: 90px;">
 	    <div style="display: table-row">
 		<!-- <div id="chartContainer" style="display: table-cell; width: 50%;"></div> -->
 		<div id="chartContainer" style="height: 360px; width: 40%;display: table-cell;"></div>

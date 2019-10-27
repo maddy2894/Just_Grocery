@@ -6,9 +6,9 @@
 </head>
 <body>
 <div class="container" style= "width:300px">
-
+<div style="margin-top: 90px">
 <form class="needs-validation" novalidate action="add_retailer" method="post">
-  
+  	
     <div class="form-row">
       <label for="validationCustom01">Unique ID</label>
       <input type="text" class="form-control" name="id" id="validationCustom01" placeholder="ID" value="" required>
@@ -62,6 +62,7 @@
   
   <input class="btn btn-primary" type="submit" value="Add Retailer" name="submit" />
 </form>
+</div>
 <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {

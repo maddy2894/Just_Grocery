@@ -73,4 +73,13 @@ public class DbLoginManager implements LoginManager {
 	public List<user> fetchPassword(String email) {
 		return this.sessionFactory.getCurrentSession().createQuery("from user where email_id='"+ email + "'").list();
 	}
+	
+	@Override
+	public void resetPassword(String email, String password) {
+		String query = "UPDATE user SET passwd='"+ password + "' where email_id='"+ email + "'";
+		
+		this.sessionFactory.getCurrentSession().createQuery(query).executeUpdate();
+	}
+	
+	
 }

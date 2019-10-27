@@ -21,7 +21,7 @@ public class ProductServiceImplementation implements ProductService {
 	@Override
 	public List<product_prices> getProducts(String name, admin_product_history searched_product) {
 		System.out.println(name + searched_product);
-//		productDao.storeSearchHistoryDAO(searched_product);
+		productDao.storeSearchHistoryDAO(searched_product);
 		List<product_prices> productPrices = productDao.getProductsDAO(name);
 		return productPrices;
 	}

@@ -72,6 +72,25 @@
 		}
 		
 	}
+	
+	function checkUsername() {
+		var searchInput = document.getElementById("usid");
+		var div = document.getElementById("errorlogin");
+		var link = document.getElementById('linkTest');
+		if (searchInput.value == "" || searchInput.value == " ") {
+			while( div.firstChild ) {
+			    div.removeChild( div.firstChild );
+			}
+			div.appendChild( document.createTextNode("Please enter email address") );
+			return false;
+		} else {
+			link.href = "/elec5619/forgotPassword/"+searchInput.value;
+			while( div.firstChild ) {
+			    div.removeChild( div.firstChild );
+			}
+			return true;
+		}
+	}
 	</script>
 </head>
    
@@ -94,6 +113,7 @@
     </div>
     <div id="error1"> </div>
     <input type="submit" class="btn btn-outline-dark" value="Login" /> 
+    <small><a style="font-weight: 400; color: #212529;" id="linkTest" href="/elec5619/forgotPassword/${document.getElementById('usid').value}" onclick="return checkUsername();">Forgot Password?</a></small>
     <div id="errorlogin"></div> 
 </form>
 <p style="color:red">${model}</p>

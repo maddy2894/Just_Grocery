@@ -8,5 +8,7 @@
 <title>JustGrocery</title>
 </head>
 <body>
+<div style="margin-top: 90px">
 <h1>${msg_val}</h1>
+</div>
 </body>

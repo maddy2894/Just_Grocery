@@ -30,7 +30,7 @@
 		        <a class="nav-link" href="/elec5619/wishlist/">WishList</a>
 		      </li>
 		       <li class="nav-item">
-		        <a class="nav-link" href="/elec5619/basket">Basket</a>
+		        <a class="nav-link" href="/elec5619/wishlist/product/">Product Search</a>
 		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="/elec5619/wishListComparison">WishList Comparison</a>

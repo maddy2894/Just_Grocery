@@ -8,7 +8,8 @@
 	<title>Home Page</title>
 </head>
 <body>
-
+<div class="container">
+<div style="margin-top: 90px">
 <c:choose>
     <c:when test="${model.message!=null}">
         <p>"${model.message}"</p>
@@ -21,7 +22,8 @@
 </c:choose>
 
 
-
+</div>
+</div>
 
 </body>
 </html>

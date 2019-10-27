@@ -11,5 +11,5 @@ public interface LoginManager extends Serializable{
 	public String addUserDetails(login_details_ad login_details_ad);
 	public String addRegDetails(user user);
 	public List<user> fetchPassword(String email);
-	
+	public void resetPassword(String email, String password);
 }

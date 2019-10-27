@@ -74,6 +74,7 @@ chart3.render();
 <body>
 <h1 style="text-align:center;font-size:24px">WishList Products Comparison</h1>
 <div class="container">
+<div style="margin-top: 90px">
 <form action="/elec5619/wishListComparison" method="post">
     Select Wishlist:&nbsp;
     <select name="wishlist">
@@ -117,6 +118,7 @@ chart3.render();
 	        <div id="chartContainer3" style="display: table-cell;"></div>
 	        <div id="chartContainer2" style="display: table-cell;"></div>
 	    </div>
+	</div>
 	</div>
 </div>
 

@@ -6,6 +6,8 @@
 <title>Logsuccess</title></head>
    
 <body>
+<div style="margin-top: 90px">
 <p> reg successfull. </p>
+</div>
  
 </body>

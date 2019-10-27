@@ -14,6 +14,7 @@
   </head>
   <body>
   <div class="container" style= "width:300px">
+  <div style="margin-top: 90px;">
  <c:forEach items="${model.user}" var="prod">
 <form class="needs-validation" novalidate action="user_details" method="post">
   
@@ -96,6 +97,7 @@
   }, false);
 })();
 </script>
+</div>
 </div>
 </body>
 </html>
