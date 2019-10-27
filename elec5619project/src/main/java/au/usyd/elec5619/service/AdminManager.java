@@ -13,9 +13,9 @@ public interface AdminManager extends Serializable {
 
 	public void addProduct(product_prices newproduct); 
 	
-	public List<user> updateuserprofile();
+	public List<user> updateuserprofile(String test );
 	
-	public void modifiedUserProfile(user user);
+	public void modifiedUserProfile(user user, String test);
 	
 	public int addRetailer(retailer retailer);
 	
