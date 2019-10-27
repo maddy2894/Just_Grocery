@@ -34,7 +34,7 @@ public class wishlist_tests extends TestCase{
 	
 	public void testSetAndGetIs_active() {
 		
-		String test_isactive="y";
+		String test_isactive="true";
 		assertNull(wish_list.getIs_active());
 		wish_list.setIs_active(test_isactive);
 		assertEquals(test_isactive,wish_list.getIs_active());
