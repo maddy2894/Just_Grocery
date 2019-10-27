@@ -24,7 +24,7 @@
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 		    <ul class="navbar-nav mr-auto">
 		      <li class="nav-item active">
-		        <a class="nav-link" href="/elec5619">Home</a>
+		        <a class="nav-link" href="/elec5619/user_details">Home</a>
 		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="/elec5619/wishlist/">WishList</a>

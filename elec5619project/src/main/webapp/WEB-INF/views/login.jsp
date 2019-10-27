@@ -54,7 +54,16 @@
 		}
 	}
 	function sub()
-	{
+	{	
+		var spinnerDiv = document.createElement('div');
+		spinnerDiv.classList.add("spinner-border");
+		spinnerDiv.classList.add("text-dark");
+		spinnerDiv.role="status";
+		var spinnerSpan = document.createElement('span');
+		spinnerSpan.classList.add("sr-only");
+		spinnerDiv.appendChild(spinnerSpan);
+		var loginButton = document.getElementById("spinner");
+		loginButton.appendChild(spinnerDiv);
 		var searchInput = document.getElementById("usid");
 		var passInput= document.getElementById("passid");
 		var div = document.getElementById("errorlogin");
@@ -70,7 +79,6 @@
 			}
 			return true;
 		}
-		
 	}
 	
 	function checkUsername() {
@@ -84,6 +92,15 @@
 			div.appendChild( document.createTextNode("Please enter email address") );
 			return false;
 		} else {
+			var spinnerDiv = document.createElement('div');
+			spinnerDiv.classList.add("spinner-border");
+			spinnerDiv.classList.add("text-dark");
+			spinnerDiv.role="status";
+			var spinnerSpan = document.createElement('span');
+			spinnerSpan.classList.add("sr-only");
+			spinnerDiv.appendChild(spinnerSpan);
+			var loginButton = document.getElementById("spinner");
+			loginButton.appendChild(spinnerDiv);
 			link.href = "/elec5619/forgotPassword/"+searchInput.value;
 			while( div.firstChild ) {
 			    div.removeChild( div.firstChild );
@@ -113,8 +130,9 @@
     </div>
     <div id="error1"> </div>
     <input type="submit" class="btn btn-outline-dark" value="Login" /> 
-    <small><a style="font-weight: 400; color: #212529;" id="linkTest" href="/elec5619/forgotPassword/${document.getElementById('usid').value}" onclick="return checkUsername();">Forgot Password?</a></small>
+    <small><a style="font-weight: 400; color: #212529;" id="linkTest" href="/elec5619/forgotPassword" onclick="return checkUsername();">Forgot Password?</a></small>
     <div id="errorlogin"></div> 
+    <div id="spinner" style="margin-top:5px;"></div>
 </form>
 <p style="color:red">${model}</p>
  <form action="/elec5619/register" method="GET">
