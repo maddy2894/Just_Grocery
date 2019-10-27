@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity(name="WishlistEntity")
+@Entity()
 @Table(name="Wishlist")
 public class wish_list implements Serializable {
 	
