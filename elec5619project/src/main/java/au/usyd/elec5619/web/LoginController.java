@@ -62,16 +62,18 @@ public class LoginController {
 	  
 	  Map<String,Object> myModel=new HashMap<String,Object>();
 	  myModel.put("logged", logged_in);
-	  if(logged_in.equals("success"))
-	  {
+	  if(logged_in.equals("success")) {
 		  if(email.equals("admin@justgrocery.com")) {
-		  session.setAttribute("user", email);
-		  return  "redirect:/wishListComparison";     //new ModelAndView("logsuccess");
-	  }
-	  else {
+			  session.setAttribute("user", email);
+			  return  "redirect:/userlogininfo";     //new ModelAndView("logsuccess");
+		  } else {
+			  session.setAttribute("user", email);
+			  return  "redirect:/wishListComparison";   
+		  }
+	 } else {
 		  return   "redirect:/login_failure";   //new ModelAndView("login","model",myModel);
 	  }
-}
+	 }
 	 
 	  
 	  @RequestMapping(value="/login_failure", method= RequestMethod.GET) 

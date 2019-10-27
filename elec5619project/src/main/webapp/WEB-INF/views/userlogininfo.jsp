@@ -105,6 +105,7 @@ chart1.render();
 </script>
 </head>
 <body>
+<div style="margin-top: 90px">
 <table align="center" width="80px" >
 <tr>
 <td>
@@ -133,6 +134,6 @@ chart1.render();
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </div>
- 
+ </div>
 </body>
 </html>                              

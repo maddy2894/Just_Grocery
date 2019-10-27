@@ -72,9 +72,9 @@ chart3.render();
  </script>
  </head>
 <body>
+<div style="margin-top: 90px">
 <h1 style="text-align:center;font-size:24px">WishList Products Comparison</h1>
 <div class="container">
-<div style="margin-top: 90px">
 <form action="/elec5619/wishListComparison" method="post">
     Select Wishlist:&nbsp;
     <select name="wishlist">
