@@ -1,14 +1,13 @@
 <%@ include file="/WEB-INF/views/include.jsp" %>
 <html>   
 <head>
-<title>Home</title>
+<title>Login</title>
 <style>
 		#error,#error1,#errorlogin {
 		color: red;
 		}
-		
-	</style>
-	<script>
+</style>
+<script>
 	window.onload = function() {
 		var searchInput = document.getElementById("usid");
 		var passInput= document.getElementById("passid");
@@ -18,11 +17,11 @@
 				while( div.firstChild ) {
 				    div.removeChild( div.firstChild );
 				}
-				div.appendChild( document.createTextNode("Please enter username") );
+				div.appendChild( document.createTextNode("Please enter email address") );
 			}
 		}
 		passInput.onblur = function() {
-			if (passInput.value == "" || passInput.value == " ") {
+			if (passInput.value == "" || passInput.value == " " ) {
 				var divp = document.getElementById("error1")
 				while( divp.firstChild ) {
 				    divp.removeChild( divp.firstChild );
@@ -39,7 +38,7 @@
 			}
 		}
 		passInput.onfocus = function() {
-			if (passInput.value != "" || passInput.value != " ") {
+			if (passInput.value != "" || passInput.value != " " ) {
 				var divp = document.getElementById("error1")
 				while( divp.firstChild ) {
 				    divp.removeChild( divp.firstChild );
@@ -52,16 +51,13 @@
 		var searchInput = document.getElementById("usid");
 		var passInput= document.getElementById("passid");
 		var div = document.getElementById("errorlogin");
-
 		if (passInput.value == "" || passInput.value == " " || searchInput.value == "" || searchInput.value == " ") {
-			console.log("invalid");
 			while( div.firstChild ) {
 			    div.removeChild( div.firstChild );
 			}
-			div.appendChild( document.createTextNode("Please enter username/password") );
+			div.appendChild( document.createTextNode("Please enter email address/password") );
 			return false;
 		} else {
-			console.log("valid");
 			while( div.firstChild ) {
 			    div.removeChild( div.firstChild );
 			}
@@ -70,32 +66,32 @@
 		
 	}
 	</script>
-
-
 </head>
    
 <body>
-<div class="container">
-
+<div class="container" style="margin: 100px 500px 100px 500px">
 
 <h1>Login</h1>
-<form action="login" onsubmit="return sub();" method="post">  
-    Email:<input type="email" name="email_id" id="usid" />
+<form action="/elec5619/login" onsubmit="return sub();" method="post">
+	<div class="form-group" >
+	<label for="InputEmail">Email address</label>
+	<input type="email" class="form-control" style="width:240px" name="email_id" id="usid"  placeholder="Enter email">
+	</div>  
     <div id="error"> </div>
-    <br/>  
-    Password:<input type="password" name="passwd" id="passid"/>
+	<div class="form-group">
+    <label for="InputPassword">Password</label>
+    <input  type="password" class="form-control" style="width:240px" name="passwd" id="passid" minlength="8" placeholder="Password">
+    <!-- <small id="passwordHelpInline" class="text-muted"> Must be 8-20 characters long.</small> -->
+    </div>
     <div id="error1"> </div>
-    <br/>  
-    <input type="submit" value="login"/> 
+    <input type="submit" class="btn btn-outline-dark" value="Login" /> 
     <div id="errorlogin"></div> 
 </form>
 <p> ${model}</p>
- <form action="/elec5619/home/register/" method="post">
- 	<input type="submit" value="register"/>
+ <form action="/elec5619/register" method="GET">
+ 	<small>new to JustGrocery?</small>
+ 	<input type="submit" class="btn btn-outline-dark" value="Register"/>
  </form>
- 
-
-
-</div>
+</div>	
 </body> 
-</html>
+</html> 

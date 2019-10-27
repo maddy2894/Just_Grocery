@@ -14,6 +14,7 @@ import au.usyd.elec5619.domain.user;
 
 @Service(value = "loginService")
 public class LoginService {
+	
 	@Resource(name="loginManager")
 	private LoginManager loginManager;
 	
@@ -34,16 +35,11 @@ public class LoginService {
 			  Timestamp ts = new Timestamp(time);
 			  ld.setEmail_id(email);
 			  ld.setLogin_time(ts);
-				/*
-				 * user us = new user(); // us.setEmail_id(low_email);
-				 * us.setPasswd(httpServletRequest.getParameter("password")); //
-				 */	 
+ 
 			  this.loginManager.addUserDetails(ld); 
 			  return "success";
 		}
 		else {
-
-			
 			System.out.println("pass doesn't match");
 			System.out.println(dbpassword);
 			System.out.println(password);
@@ -52,8 +48,4 @@ public class LoginService {
 		
 	}
 	
-	public void errorfuction()
-	{
-		
-	}
 }

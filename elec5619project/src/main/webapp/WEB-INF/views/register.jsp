@@ -5,7 +5,7 @@
 <head>
 <title>Register</title></head>
 <style>
-	#error,#error1,#error2,#error3,#error4 {
+	#error,#error1,#error2,#error3,#error4,#errorreg {
 	color:red;
 	}
 </style>
@@ -105,35 +105,73 @@
 			}	
 		}
 	}
-	
 	}
+	function reg()
+	{
+		var firstname = document.getElementById("firstid");
+		var lastname= document.getElementById("lastid");
+		var email = document.getElementById("emailid");
+		var password = document.getElementById("passid");
+		var confirmpass = document.getElementById("confirmid");
+		var div= document.getElementById("errorreg")
+
+		
+		
+		if (firstname.value == "" || firstname.value == " " || lastname.value == "" || lastname.value == " " || email.value == "" || email.value == " "
+				|| password.value == "" || password.value == " " || confirmpass.value=="" || confirmpass.value==" ") {
+			console.log("invalid");
+			while( div.firstChild ) {
+			    div.removeChild( div.firstChild );
+			}
+			div.appendChild(document.createTextNode("Please enter details properly") );
+			return false;
+		} else {
+			console.log("valid");
+			while( div.firstChild ) {
+			    div.removeChild( div.firstChild );
+			}
+			return true;
+		}
+	}
+	
 </script>
 
-</style>
 </head>
 <body>
+<div class="container" style="margin: 100px 500px 100px 500px">
 <h1>Register</h1>
 
-
-<form action="home" method="post">
-	FirstName:<input type="text" name="first_name" id="firstid"/>
+<form action="/elec5619/register" onsubmit="return reg();" method="post">
+	<div class="form-group" >
+	<label for="firstname">FirstName</label>
+	<input type="text" class="form-control" style="width:240px" name="first_name" id="firstid"  placeholder="Enter Firstname">
+	</div>
 	<div id="error"></div>
-	<br/>
-	LastName:<input type="text" name="last_name" id="lastid"/>
+	<div class="form-group">
+	<label for="lastname">LastName</label>
+	<input type="text" class="form-control" style="width:240px" name="last_name" id="lastid"  placeholder="Enter Lastname">
+	</div>
 	<div id="error1"></div>
-	<br/>
-	Email:<input type="email" name="email_id" id="emailid">
+	<div class="form-group">
+	<label for="email id">Email Address</label>
+	<input type="email" class="form-control" style="width:240px" name="email_id" id="emailid"  placeholder="Enter Email Address">
+	</div>
 	<div id="error2"></div>
-	<br/>
-	Password:<input type="password" name="passwd" id="passid">
+	<div class="form-group">
+	<label for="password">Password</label>
+	<input type="password" class="form-control" style="width:240px" name="passwd" id="passid" minlength="8" placeholder="Enter Password">
+	</div>
 	<div id="error3"></div>
-	<br/>
-	Confirm Password:<input type="password" name="confirmpassword" id="confirmid"><br/>
+	<div class="form-group">
+	<label for="ConfirmPassword">Confirm Password</label>
+	<input type="password" class="form-control" style="width:240px" name="confirmpassword" id="confirmid" minlength="8" placeholder="Enter Confirm Password">
+	</div>
 	<div id="error4"></div>
-    <input type="submit" value="Register2"> 
+    <input type="submit" class="btn btn-outline-dark" value="Submit"> 
+    <div id="errorreg"></div>
 </form>
 
-
+</div>
 </body>
 
 </html>
