@@ -43,4 +43,9 @@ public class ProductDAOImplementation implements ProductDAO {
 		return this.sessionFactory.getCurrentSession().createQuery("SELECT DISTINCT product_name FROM product_prices").list(); 
 	}
 	
+	public List<String> getWishlists(String username) {
+		
+		return this.sessionFactory.getCurrentSession().createQuery("FROM wish_list where is_active='true' and email_id='"+ username +"'").list();
+	}
+	
 }

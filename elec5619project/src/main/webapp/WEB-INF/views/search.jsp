@@ -6,11 +6,8 @@
 	<title>JustGrocery</title>
 </head>
 <body>
-	<div class="container">
-		<h1>
-			Comparison Page  
-		</h1>
-		<h3>Search Result</h3>
+	<div class="container" style="margin-bottom: 30px;">
+		<h3 style="margin-top: 90px;">Search Result</h3>
 		<div class="card-deck">
 			<c:forEach items="${model.products}" var="prod">
 			  <div class="card" style="min-width: 300px; margin-bottom: 5px;">
@@ -26,6 +23,12 @@
 			    </div>
 			    <div class="card-footer">
 			      <small>Location: <c:out value="${prod.retailer.location}"/> </small>
+			      <select name="product" class="btn btn-outline-dark" class="form-control" id="exampleFormControlSelect1">
+					   <option value="Select">Select Wishlist..</option>
+					  <c:forEach items="${model.wishlists}" var="wishItem">
+					    <option value="${wishItem.wishlist_name}">${wishItem.wishlist_name}</option>
+					</c:forEach>  
+					</select >
 			      <button style="float:right;" type="submit" class="btn btn-outline-dark"><span class="fa fa-plus"></span></button>
 			    </div>
 			  </div>

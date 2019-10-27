@@ -46,16 +46,19 @@ public class ProductController{
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException,IOException {
 	
 	Date now = new Date();
 	String searchedProduct = request.getParameter("search");
 	admin_product_history searched_product = new admin_product_history();
+	String username = session.getAttribute("user").toString();
+	List<String> wishlists = productService.getWishlists(username);
 	searched_product.setProduct(searchedProduct);
 	searched_product.setSearched_date(now);
 	logger.info("loggerInfo" + this.productService.getProducts(searchedProduct, searched_product));
 	Map<String, Object> myModel = new HashMap<String, Object>();
 	myModel.put("now",now);
+	myModel.put("wishlists",wishlists);
 	myModel.put("products", this.productService.getProducts(searchedProduct, searched_product));
 	return new ModelAndView("search", "model", myModel);
 	

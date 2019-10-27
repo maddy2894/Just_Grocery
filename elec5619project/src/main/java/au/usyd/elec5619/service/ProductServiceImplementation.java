@@ -42,4 +42,12 @@ public class ProductServiceImplementation implements ProductService {
 		return matched;
 	}
 	
+	@Override
+	public List<String> getWishlists(String username) {
+		List<String> wishlists = productDao.getWishlists(username);
+		
+		
+		return wishlists;
+	}
+	
 }
