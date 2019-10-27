@@ -13,59 +13,89 @@
     </style>
   </head>
   <body>
-    <h3 align = "center">Just Grocery</h3>
-    <br>
-    <h3 align ="center">Profile Overview</h3>
-    <p>${model.user}</p> 
-    <form  action="user_details" method="post" >
-    <table border="0" align="center" >
-	<c:forEach items="${model.user}" var="prod">
-      <tr>
-        <td>First Name</td>
-        <td>
-          <input type="text" name="first_name" value="<c:out value="${prod.first_name}"/>"/>
-        </td>
-      </tr>
-      <tr>
-        <td>Last Name</td>
-        <td>
-          <input type="text" name="last_name"  value="<c:out value="${prod.last_name}"/>"/>
-        </td>
-      </tr>
-      <tr>
-        <td>Email address</td>
-        <td>
-          <input type="email" name="email_id" value="<c:out value="${prod.email_id}"/>"/>
-      </tr>
-      <tr>
-        <td>Password</td>
-        <td>
-          <input type="password" name="passwd"  value="<c:out value="${prod.passwd}"/>"/>
-        </td>
-      </tr>
-      <tr>
-        <td>Postcode</td>
-        <td>
-          <input type="text" name="post_code"  value="<c:out value="${prod.post_code}"/>"/>
-        </td>
-      </tr>
-      <tr>
-        <td>Mobile number</td>
-        <td>
-          <input type="text" name="mobile_no" value="<c:out value="${prod.mobile_no}"/>"/>
-        </td>
-      </tr>
-      </c:forEach>
-      <tr >
-        <td></td>
+  <div class="container" style= "width:300px">
+ <c:forEach items="${model.user}" var="prod">
+<form class="needs-validation" novalidate action="user_details" method="post">
+  
+    <div class="form-row">
+      <label for="validationCustom01">First name</label>
+      <input type="text" class="form-control" name="first_name" id="validationCustom01" placeholder="First name" value="<c:out value="${prod.first_name}"/>" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="validationCustom02">Last name</label>
+      <input type="text" class="form-control" name="last_name" id="validationCustom02" placeholder="Last name" value="<c:out value="${prod.last_name}"/>" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="validationCustomUsername">Email</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend"></span>
+        </div>
+        <input type="text" class="form-control" name="email_id" id="validationCustomUsername"value="<c:out value="${prod.email_id}"/>" required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div>
 
-        <td style="float: right;">
-        <input type="submit" name="submit" value="Edit Profile"/>
 
-        </td>
-      </tr>
-    </table>
-    </form> 
-    
-  </body>
+    <div class="form-row">
+      <label for="validationCustom03">Password</label>
+      <input type="password" class="form-control" name="passwd" id="validationCustom03" placeholder="Password" aria-describedby="passwordHelpBlock" value="<c:out value="${prod.passwd}"/>" required>
+       <small id="passwordHelpBlock" class="form-text text-muted">
+  Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
+	</small>
+      <div class="invalid-feedback">
+        Please provide a valid password.
+      </div>
+    </div>
+    	
+    <div class="form-row">
+      <label for="validationCustom04">Postcode</label>
+      <input type="text" class="form-control" name="post_code" id="validationCustom04" placeholder="Postcode"  value="<c:out value="${prod.post_code}"/>" required>
+     
+      <div class="invalid-feedback">
+        Please provide a valid state.
+      </div>
+    </div>
+    <div class="form-row">
+      <label for="validationCustom05">Mobile Number</label>
+      <input type="text" class="form-control" name="mobile_no" id="validationCustom05" placeholder="Mobile Number" value="<c:out value="${prod.mobile_no}"/>" required>
+      <div class="invalid-feedback">
+        Please provide a valid zip.
+      </div>
+    </div>
+  
+  
+  <input class="btn btn-primary" type="submit" name="submit" value="Edit Profile"/>
+</form>
+</c:forEach>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
+</div>
+</body>
 </html>

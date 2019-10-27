@@ -19,10 +19,10 @@ import au.usyd.elec5619.domain.product_prices;
 import au.usyd.elec5619.domain.retailer;
 import au.usyd.elec5619.domain.user;
 
-@Service(value="retailerManager")
+@Service(value="adminManager")
 @Transactional
-public class DbRetailerManager implements RetailerManager, ProductManager {
-	private static final Logger logger = LoggerFactory.getLogger(DbRetailerManager.class);
+public class DbAdminManager implements AdminManager, ProductManager {
+	private static final Logger logger = LoggerFactory.getLogger(DbAdminManager.class);
 	private SessionFactory sessionFactory;
 	
 	
@@ -64,7 +64,7 @@ public class DbRetailerManager implements RetailerManager, ProductManager {
 	public void modifiedUserProfile(user userdetails) {
 		Session currentSession = this.sessionFactory.getCurrentSession();
 		String hql = "delete from user where email_id =:name";
-		currentSession.createQuery(hql).setString("name", "shashank@gmail.com").executeUpdate();
+		currentSession.createQuery(hql).setString("name", "shashankjain@gmail.com").executeUpdate();
 		
 		System.out.println("hello, i am from modified userproigle");
 		this.sessionFactory.getCurrentSession().save(userdetails);
@@ -92,15 +92,15 @@ public class DbRetailerManager implements RetailerManager, ProductManager {
 				" GROUP BY EXTRACT(month from login_time),email_id" + 
 				" order by month;");
 		List<Object[]> rows = a.list();
-		Map<Object,Object> map = null;
-		List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>();
-		System.out.println(rows);
-	
 		
-		  for (Object[] row : rows) { 
-			  System.out.println(row[0] + " " +row[1]+" "+row[2]);
-			  map = new HashMap<Object,Object>(); map.put("y", row[2]); map.put("label", row[1]); list.add(map);
-			  
+		  Map<Object,Object> map = null;  
+		  List<Map<Object,Object>> list = new ArrayList<Map<Object,Object>>(); System.out.println(rows);
+		  
+		  
+		  for (Object[] row : rows) { System.out.println(row[0] + " "
+		  +row[1]+" "+row[2]); map = new HashMap<Object,Object>(); map.put("y",
+		  row[2]); map.put("label", row[1]); list.add(map);
+		  
 		  }
 		 
 	    return list;

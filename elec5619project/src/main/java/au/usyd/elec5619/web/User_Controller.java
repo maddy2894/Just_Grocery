@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import au.usyd.elec5619.domain.user;
-import au.usyd.elec5619.service.RetailerManager;
+import au.usyd.elec5619.service.AdminManager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;

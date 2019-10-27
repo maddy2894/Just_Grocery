@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
 //import org.springframework.stereotype.Controller;
-import au.usyd.elec5619.service.RetailerManager;
+import au.usyd.elec5619.service.AdminManager;
 import javax.annotation.*;
 
 
@@ -28,7 +28,7 @@ public class RetailerController implements Controller{
 	private static final Logger logger = LoggerFactory.getLogger(RetailerController.class);
 	
 	@Resource(name="retailerManager")
-	private RetailerManager retailerManager;
+	private AdminManager retailerManager;
 	//System.out.print('____________________________________________')
 	
 	//@RequestMapping(value = "/hello", method = RequestMethod.GET)
@@ -49,7 +49,7 @@ public class RetailerController implements Controller{
 	
 	}
 	
-	public void setRetailerManager(RetailerManager retailerManager) {
+	public void setRetailerManager(AdminManager retailerManager) {
 		this.retailerManager = retailerManager;
 	}
 }

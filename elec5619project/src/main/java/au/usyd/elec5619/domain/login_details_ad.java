@@ -24,11 +24,12 @@ public class login_details_ad implements Serializable {
 	private Date logout_time;
 	
 	@Column(name ="elapsed_minutes")
-	private int elapsed_minutes;
-	public double getLogin_number() {
+	private double elapsed_minutes;
+	
+	public int getLogin_number() {
 		return login_number;
 	}
-	public void setLogin_number(double login_number) {
+	public void setLogin_number(int login_number) {
 		this.login_number = login_number;
 	}
 	public String getEmail_id() {
@@ -49,11 +50,11 @@ public class login_details_ad implements Serializable {
 	public void setLogout_time(Date logout_time) {
 		this.logout_time = logout_time;
 	}
-	public int getElapsed_minutes() {
+	public double getElapsed_minutes() {
 		return elapsed_minutes;
 	}
-	public void setElapsed_minutes(int elapsed_minutes) {
-		this.elapsed_minutes = elapsed_minutes;
+	public void setElapsed_minutes(double number) {
+		this.elapsed_minutes = number;
 	}
 	
 }

@@ -7,7 +7,7 @@ import au.usyd.elec5619.domain.product_prices;
 import au.usyd.elec5619.domain.retailer;
 import au.usyd.elec5619.domain.user;
 
-public interface RetailerManager extends Serializable {
+public interface AdminManager extends Serializable {
 	
 	public List<retailer> getRetailers();
 

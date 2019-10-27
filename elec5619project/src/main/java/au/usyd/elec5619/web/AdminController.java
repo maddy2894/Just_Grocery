@@ -1,14 +1,8 @@
 package au.usyd.elec5619.web;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -18,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.Gson;
@@ -26,15 +19,16 @@ import com.google.gson.Gson;
 import au.usyd.elec5619.domain.product_prices;
 import au.usyd.elec5619.domain.retailer;
 import au.usyd.elec5619.domain.user;
-import au.usyd.elec5619.service.RetailerManager;
+import au.usyd.elec5619.service.AdminManager;
 
 
 @Controller
 //@RequestMapping(value="/**")
-public class ProductController {
+public class AdminController {
 	
-	@Resource(name="retailerManager")
-	private RetailerManager retailerManager;
+	@Resource(name="adminManager")
+	private AdminManager adminManager;
+	
 	
 	@RequestMapping(value="/add_product")
 	public String addProduct(Model uiModel) {
@@ -57,8 +51,15 @@ public class ProductController {
 		newproduct.setProduct_name(httpServletRequest.getParameter("product_name"));
 	
 		newproduct.setPrice(httpServletRequest.getParameter("price"));
-		this.retailerManager.addProduct(newproduct);
-		return "add_product";
+		if(newproduct.getPrice()==null) {
+			return "add_product";
+		}
+		else
+		{
+			this.adminManager.addProduct(newproduct);
+			return "add_product";
+		}
+		
 	}	
 
 	@RequestMapping(value="/user_details")
@@ -66,7 +67,7 @@ public class ProductController {
 		
 		  System.out.println("In post method"); 
 		Map<String, Object> myModel = new HashMap<String, Object>();
-		myModel.put("user", this.retailerManager.updateuserprofile());
+		myModel.put("user", this.adminManager.updateuserprofile());
 		return new ModelAndView("user_details","model",myModel);
 	}
 	  @RequestMapping(value="/user_details", method=RequestMethod.POST)
@@ -81,7 +82,7 @@ public class ProductController {
 	  	userdetails.setPasswd(httpServletRequest.getParameter("passwd"));
 	  	userdetails.setPost_code(Integer.valueOf(httpServletRequest.getParameter("post_code")));
 	  	
-	  	this.retailerManager.modifiedUserProfile(userdetails);
+	  	this.adminManager.modifiedUserProfile(userdetails);
 	   
 	  	return "success_profile";
 	  }
@@ -107,7 +108,7 @@ public class ProductController {
 		System.out.println(retailer.getLocation());
 		
 		retailer.setPost_code(Integer.valueOf(httpServletRequest.getParameter("postcode")));
-		int value = this.retailerManager.addRetailer(retailer);
+		int value = this.adminManager.addRetailer(retailer);
 		System.out.println(value);
 		
 		return "add_retailer";
@@ -121,19 +122,29 @@ public class ProductController {
 		Map<String, Object> myModel = new HashMap<String, Object>();
 		Gson gsonObj = new Gson();
 		
-		  String dataPointsUser = gsonObj.toJson(this.retailerManager.getUserInfo());
+		  String dataPointsUser = gsonObj.toJson(this.adminManager.getUserInfo());
 		  myModel.put("login_details_id",dataPointsUser );
 		  
-		  String dataPointProduct = gsonObj.toJson(this.retailerManager.getProductInfo());
+		  String dataPointProduct = gsonObj.toJson(this.adminManager.getProductInfo());
 		  myModel.put("product_info",dataPointProduct);
 		 
-		String dataPointNoUserCount = gsonObj.toJson(this.retailerManager.getNumberOfLogs());
+		String dataPointNoUserCount = gsonObj.toJson(this.adminManager.getNumberOfLogs());
 		myModel.put("number_of_logs", dataPointNoUserCount);
 		
-		String dataPointerProductSearched = gsonObj.toJson(this.retailerManager.getProductByDay());
+		String dataPointerProductSearched = gsonObj.toJson(this.adminManager.getProductByDay());
 		myModel.put("search_by_day", dataPointerProductSearched);
 		
 		return new ModelAndView("/userlogininfo","model",myModel);
 	}
+	@RequestMapping(value="/userloginfo", method=RequestMethod.POST) 
+		public String addProducts(Model uiModel) {
+			System.out.println("I am at the addproduct");
+			return "add_product";
+	}
+	@RequestMapping(value="/userloginfo", method=RequestMethod.GET) 
+	public String addRetailer(Model uiModel) {
+		System.out.println("I am at the addproduct");
+		return "add_retailer";
+}
 	
 }
