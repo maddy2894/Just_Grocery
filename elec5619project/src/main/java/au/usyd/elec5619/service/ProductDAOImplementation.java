@@ -29,7 +29,7 @@ public class ProductDAOImplementation implements ProductDAO {
 	public List<product_prices> getProductsDAO(String name) {
 		
 		
-		return this.sessionFactory.getCurrentSession().createQuery("from product_prices where product_name='"+name+"'").list();
+		return this.sessionFactory.getCurrentSession().createQuery("from product_prices where price_date='2019-10-20' and product_name='"+name+"'").list();
 	}
 	
 	@Override
