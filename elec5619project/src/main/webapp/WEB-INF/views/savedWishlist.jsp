@@ -3,7 +3,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page session="false" %>
-<%@ include file="/WEB-INF/views/bootstrap.jsp" %>
 <html>
 <head>
 	<title>Home Page</title>

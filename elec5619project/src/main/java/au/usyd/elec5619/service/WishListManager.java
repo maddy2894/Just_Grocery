@@ -2,6 +2,7 @@ package au.usyd.elec5619.service;
 import java.io.Serializable;
 import java.util.List;
 
+import au.usyd.elec5619.domain.product_prices;
 import au.usyd.elec5619.domain.wish_list;
 
 public interface WishListManager extends Serializable {
@@ -19,5 +20,5 @@ public interface WishListManager extends Serializable {
 
 	public void makeWishListInActive(wish_list wishlist1);
 
-
+	public List<String> getRetailers();
 }

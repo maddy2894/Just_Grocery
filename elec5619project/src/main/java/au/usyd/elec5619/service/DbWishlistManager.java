@@ -18,7 +18,7 @@ import au.usyd.elec5619.domain.retailer;
 @Service(value="wishlistManager")
 @Transactional
 public class DbWishlistManager implements WishListManager {
-	private static final Logger logger = LoggerFactory.getLogger(DbRetailerManager.class);
+	private static final Logger logger = LoggerFactory.getLogger(DbWishlistManager.class);
 	private SessionFactory sessionFactory;
 	
 	@Autowired
@@ -78,7 +78,12 @@ public class DbWishlistManager implements WishListManager {
 	}
 	
 	
-	
+	@Override
+	public List<String> getRetailers() {
+		
+		return this.sessionFactory.getCurrentSession().createQuery("select distinct product_name from product_prices where price_date='2019-10-20'").list();
+		
+		}
 
 
 	

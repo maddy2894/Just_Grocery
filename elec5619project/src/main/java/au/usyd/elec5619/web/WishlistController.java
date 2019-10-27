@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import au.usyd.elec5619.domain.wish_list;
-import au.usyd.elec5619.service.RetailerManager;
 import au.usyd.elec5619.service.WishListManager;
 import au.usyd.elec5619.service.WishListServiceManager;
 
@@ -26,9 +25,7 @@ public class WishlistController {
 	@Resource(name="wishlistManager")
 	public WishListManager wishlistManager;
 	
-	@Resource(name="retailerManager")
-	public RetailerManager retailerManager;
-	
+		
 	@Resource(name="wishlistServiceManager")
 	public WishListServiceManager wishlistServiceManager;
 	
@@ -47,7 +44,7 @@ public class WishlistController {
 	public ModelAndView createNewWishlist() {
 		
 		Map<String, Object> myModel = new HashMap<String, Object>();
-		myModel.put("products", this.retailerManager.getRetailers());
+		myModel.put("products", this.wishlistManager.getRetailers());
     	return new ModelAndView("createwishlist","model",myModel);
     	
 	}
@@ -69,7 +66,7 @@ public class WishlistController {
 		List details = wishlistManager.getOneWishList(wishlistname);
 		Map<String, Object> myModel = new HashMap<String, Object>();
 		myModel.put("wishlistdetails", details);
-		myModel.put("retailers", this.retailerManager.getRetailers());
+		myModel.put("retailers", this.wishlistManager.getRetailers());
 		
 		return new ModelAndView("editWishList","model",myModel);
 	}
