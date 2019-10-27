@@ -10,14 +10,14 @@ public interface WishListManager extends Serializable {
 	
 	public List<String> retrieveWishlist();
 
-	public String getWishlistName(String wishlistname);
  
-	public List getAllWishlists();
+	public List getAllWishlists(String email);
 	
 	public List getOneWishList(String wishlistname);
 	
 	public void saveEditedWishList(wish_list wishlist1,String old_wishlistname);
 
 	public void makeWishListInActive(wish_list wishlist1);
+
 
 }

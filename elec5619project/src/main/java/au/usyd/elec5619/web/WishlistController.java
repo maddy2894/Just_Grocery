@@ -1,119 +1,81 @@
 package au.usyd.elec5619.web;
-
-import java.io.Console;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-
 import au.usyd.elec5619.domain.wish_list;
 import au.usyd.elec5619.service.RetailerManager;
 import au.usyd.elec5619.service.WishListManager;
+import au.usyd.elec5619.service.WishListServiceManager;
 
-
-import javax.annotation.*;
-import au.usyd.elec5619.domain.wish_list;
 
 
 @Controller
 @RequestMapping(value = "/wishlist/**")
-public class WishlistController {
+public class WishlistController { 
 	
-
-	private static final Logger logger = LoggerFactory.getLogger(WishlistController.class);
 	@Resource(name="wishlistManager")
 	public WishListManager wishlistManager;
+	
 	@Resource(name="retailerManager")
 	public RetailerManager retailerManager;
 	
-	@RequestMapping(value = "/")
-	public ModelAndView wishlist() {
-		
-		List wishlists= wishlistManager.getAllWishlists();
-		System.out.println(wishlists);
-		
+	@Resource(name="wishlistServiceManager")
+	public WishListServiceManager wishlistServiceManager;
+	
+	
+	@RequestMapping(value = "/") //Redirects to wishList page
+	public ModelAndView wishlist(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		//
+		String email="kp2@gmail.com";
+		List wishlists = wishlistServiceManager.getAllWishlists(email);
 		Map<String, Object> myModel = new HashMap<String, Object>();
 		myModel.put("wishlists",wishlists);
 		return new ModelAndView("wishlist","model",myModel);
 	}
 	
-	@RequestMapping(value = "/newWishlist")
+	@RequestMapping(value = "/newWishlist") // To create new wishList
 	public ModelAndView createNewWishlist() {
 		
 		Map<String, Object> myModel = new HashMap<String, Object>();
-		myModel.put("retailers", this.retailerManager.getRetailers());
+		myModel.put("products", this.retailerManager.getRetailers());
     	return new ModelAndView("createwishlist","model",myModel);
+    	
 	}
-	
 	
 	@RequestMapping(value = "/saveWishlist", method = RequestMethod.POST)
 	public ModelAndView createNewWishlist(HttpServletRequest request, HttpServletResponse response) {
-		
-         
-        String wishlistname=request.getParameter("wishlistName");
-		String productList=request.getParameter("form-control");
-		
-		System.out.println("wishlistname"+wishlistname);
-		System.out.println("productList"+productList);
-		
-		Map<String, Object> myModel = new HashMap<String, Object>();
-		myModel.put("productList", productList);
-		myModel.put("wishlistname", wishlistname);
-		
-        wish_list wishlist1=new wish_list();
-        wishlist1.setWishlist_name(wishlistname);
-        wishlist1.setList_of_products(productList);
-        wishlist1.setEmail_id("pooja@gmail.com");
-        
-        Date updated_time=(new Date());
-        wishlist1.setUpdated_time(updated_time);
-        
-        String is_active="true";
-        wishlist1.setIs_active(is_active);
-        
-        
-   
-        String message= wishlistManager.getWishlistName(wishlistname);
-       
-       if(message=="Wishlist Name Already exists")
-       {
-       myModel.put("message",message);
-       }
-        
-      else{
-    	   wishlistManager.saveWishlist(wishlist1);
-       }		
+		  
+        String wishlistname=request.getParameter("wishlistName");  // Getting WishList name
+		String productList=request.getParameter("productList"); //Taking code from input area to save as product List	
+		Map<String, Object> myModel=wishlistServiceManager.saveWishList(wishlistname,productList);	
     	return new ModelAndView("savedWishlist","model",myModel);
 	}
 	
+	
 	@RequestMapping(value = "/editWishList", method=RequestMethod.POST)
-	public ModelAndView editWishlist(HttpServletRequest httpServletRequest) {
+	public ModelAndView editWishlist(HttpServletRequest httpServletRequest) { // Code when Clicked on Edit Single WishList	Card	
 		
-		System.out.println(	httpServletRequest.getParameter("wishlist_name"));
-		System.out.println("Old Wishlist Name"+httpServletRequest.getParameter("oldwishlist_name"));
+		String wishlistname = httpServletRequest.getParameter("wishlist_name");
+		System.out.println(httpServletRequest.getParameter("wishlist_name"));
 		
-		List details = wishlistManager.getOneWishList(httpServletRequest.getParameter("wishlist_name"));
-		System.out.println(details);
+		List details = wishlistManager.getOneWishList(wishlistname);
 		Map<String, Object> myModel = new HashMap<String, Object>();
 		myModel.put("wishlistdetails", details);
 		myModel.put("retailers", this.retailerManager.getRetailers());
 		
 		return new ModelAndView("editWishList","model",myModel);
 	}
+	
 	
 	@RequestMapping(value = "/saveEditedWishList", method=RequestMethod.POST)
 	public String saveEditedWishList(HttpServletRequest httpServletRequest) {	

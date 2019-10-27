@@ -17,19 +17,6 @@
     </c:when>
     <c:otherwise>
         <p>Saved Successfully</p>
-        <p>"${model.productList}"</p>
-<p>"${model.wishlistname}"</p>
-
-<tr>Product Name</tr>
-
-
-<c:forEach items="${model.productList}" var="product">
-  <br/>
-    <tr>      
-        <td>${product}</td>
-        <br/>
-    </tr>
-</c:forEach>
         
     </c:otherwise>
 </c:choose>
