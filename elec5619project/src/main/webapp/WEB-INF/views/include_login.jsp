@@ -12,9 +12,12 @@
 		
 	</head>
 	<body>
+
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		  <a class="navbar-brand" href="/elec5619">JustGrocery</a>
 		  
 		</nav>
+	<div class="container">
+		</div>
 	</body>
 </html>

@@ -1,4 +1,4 @@
-<%@ include file="/WEB-INF/views/include.jsp" %>
+<%@ include file="/WEB-INF/views/include_login.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <html>   
@@ -8,6 +8,11 @@
 	#error,#error1,#error2,#error3,#error4,#errorreg {
 	color:red;
 	}
+	body {
+		background-image: url("https://www.nycfoodpolicy.org/wp-content/uploads/2018/05/shutterstock_418522381-2.jpg");
+        background-repeat:no-repeat;
+        background-size:cover;
+} 
 </style>
 <script>
 	window.onload=function() {
@@ -138,7 +143,8 @@
 
 </head>
 <body>
-<div class="container" style="margin: 100px 500px 100px 500px">
+<!-- <div class="container" style="margin: 100px 500px 100px 500px"> -->
+<div class="container" style="margin-left:465px;margin-top:10px; max-width:750px">
 <h1>Register</h1>
 
 <form action="/elec5619/register" onsubmit="return reg();" method="post">

@@ -6,7 +6,14 @@
 		#error,#error1,#errorlogin {
 		color: red;
 		}
+		body {
+		background-image: url("https://www.nycfoodpolicy.org/wp-content/uploads/2018/05/shutterstock_418522381-2.jpg");
+        background-repeat:no-repeat;
+        background-size:cover;
+} 
+		
 </style>
+
 <script>
 	window.onload = function() {
 		var searchInput = document.getElementById("usid");
@@ -69,7 +76,9 @@
 </head>
    
 <body>
-<div class="container" style="margin: 100px 500px 100px 500px">
+<div class="container" style="margin-left:465px;margin-top:100px; max-width:750px">
+
+
 
 <h1>Login</h1>
 <form action="/elec5619/login" onsubmit="return sub();" method="post">
