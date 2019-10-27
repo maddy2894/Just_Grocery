@@ -75,8 +75,8 @@ public class LoginController {
 	  @RequestMapping(value="/login_failure", method= RequestMethod.GET) 
 	  public ModelAndView login_failure(Locale locale,Model model) {
 	  logger.info("Welcome register! {}. ",locale); 
-	  Map<String,Object> myModel=new HashMap<String,Object>();
-	  myModel.put("logged", "Login is unsuccessful! Please check your email id/password and login again.\n If you are a new user, please register!");
+	  String myModel=new String();
+	  myModel="In correct email/password. Please check!";
 	  return new ModelAndView("login","model",myModel);
 	  }
 	  

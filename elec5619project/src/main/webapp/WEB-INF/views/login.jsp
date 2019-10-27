@@ -87,7 +87,7 @@
     <input type="submit" class="btn btn-outline-dark" value="Login" /> 
     <div id="errorlogin"></div> 
 </form>
-<p> ${model}</p>
+<p style="color:red">${model}</p>
  <form action="/elec5619/register" method="GET">
  	<small>new to JustGrocery?</small>
  	<input type="submit" class="btn btn-outline-dark" value="Register"/>
