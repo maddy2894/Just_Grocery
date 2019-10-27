@@ -109,7 +109,7 @@ chart1.render();
 
 
 <div class= "container">
-<h1>Admin View</h1>
+<h1 style="text-align: center; font-size:24px">Admin View</h1>
 <div style="width: 100%; display: table; margin-top: 90px;">
 	    <div style="display: table-row">
 		<!-- <div id="chartContainer" style="display: table-cell; width: 50%;"></div> -->
