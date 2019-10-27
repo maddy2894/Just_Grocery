@@ -42,4 +42,18 @@ public class ProductServiceImplementation implements ProductService {
 		return matched;
 	}
 	
+	@Override
+	public List<String> getWishlists(String username) {
+		List<String> wishlists = productDao.getWishlists(username);
+		
+		
+		return wishlists;
+	}
+	
+	@Override
+	public void addProducts(String wishlist, String product, String username) {
+		System.out.println("Product Service");
+		productDao.addProducts(wishlist, product, username);
+	}
+	
 }

@@ -85,47 +85,108 @@
 			}
 			
 		}
+		function validateSearch() {
+			var searchInput = document.getElementById("search");
+			var productList = ["milk","bread","tomato","tim tam","potato","smiths thinly cut","kitkat","ccs doritos","cheese"];
+			if (productList.indexOf(searchInput.value.toLowerCase()) > -1) {
+				return true;
+			} else {
+				var div = document.getElementById("error")
+				while( div.firstChild ) {
+				    div.removeChild( div.firstChild );
+				}
+				div.appendChild( document.createTextNode("Sorry, we do not have any details about the product") );
+				return false;
+			}
+		}
+		
+		window.onload = function() {
+			var searchInput = document.getElementById("search");
+			searchInput.onblur = function() {
+				if (searchInput.value == "" || searchInput.value == " ") {
+					var div = document.getElementById("error")
+					while( div.firstChild ) {
+					    div.removeChild( div.firstChild );
+					}
+					div.appendChild( document.createTextNode("Please enter a product") );
+				}
+			}
+			searchInput.onfocus = function() {
+				if (searchInput.value != "" || searchInput.value != " ") {
+					var div = document.getElementById("error")
+					while( div.firstChild ) {
+					    div.removeChild( div.firstChild );
+					}	
+				}
+			}
+		}
 
   </script>	
 </head>
 <body>
 
 		<div class="container">
-		<form action="saveWishlist" method="post" id="myForm" onsubmit="return sub();">
-		<div class="wishlistName">
-		<label>Enter Wishlist's name:</label>
-		<input type="text" id="wishlistname" name="wishlistName" >
-		</div>
-		<div id="error" style="text-align: center"></div>
-		<br/>
-
-        <label>Enter Products</label>
-		<select name="product" class="btn btn-outline-dark" class="form-control" id="exampleFormControlSelect1"  onChange="document.getElementById('selectedValue').innerHTML = this.value;">
-		   	  <option value="Select">Select Products..</option>
-			  <c:forEach items="${model.products}" var="product">
-		      	 <option value="${product}">${product}</option>
-		      </c:forEach>  
-		</select >
-		<input type="button"  class="btn btn-outline-dark" onClick=" return addToCart(selectedValue.innerHTML)" value="Add to Cart" >
-
-		<div><span id="selectedValue"></span></div>
-
-			
-
+			<div style="margin-top:90px;">
+			<div class="productStyle" >
+				<form action="product/search" method="post" onsubmit="return validateSearch()" class="form-inline my-2 my-lg-0">
+				      <input class="form-control mr-sm-2" name="search" id="search" placeholder="Search" aria-label="Search"/>
+				      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+				      <br/>
+			    </form>
+			    <div id="error"> </div>
+		    </div>
+			<form action="saveWishlist" method="post" id="myForm" onsubmit="return sub();">
+			<div class="wishlistName">
+				<label>Enter Wishlist's name:</label>
+				<input type="text" id="wishlistname" name="wishlistName" >
+			</div>
+			<div id="error" style="text-align: center"></div>
+			<br/>
+	
+	        <label>Enter Products</label>
+			<select name="product" class="btn btn-outline-dark" class="form-control" id="exampleFormControlSelect1"  onChange="document.getElementById('selectedValue').innerHTML = this.value;">
+			   	  <option value="Select">Select Products..</option>
+				  <c:forEach items="${model.products}" var="product">
+			      	 <option value="${product}">${product}</option>
+			      </c:forEach>  
+			</select >
+			<input type="button"  class="btn btn-outline-dark" onClick=" return addToCart(selectedValue.innerHTML)" value="Add to Cart" >
+	
+			<div>
+				<span id="selectedValue">
+				</span>
+			</div>
 			<div class="input-group" style="margin-top:50px;">
   				<div class="input-group-prepend">
    				<span class="input-group-text" style="height: 280px;">Cart</span>
   				</div>
   				<textarea class="form-control" name="productList" aria-label="With textarea"></textarea>
 			</div>
-
-
 			<label>${model.retailers}</label>
 
 			<input type="submit" style="margin-left: 460px;margin-top: 110px"; class="btn btn-outline-dark" value="Save Wishlist" >
 			<div id="errorlogin" style="text-align: center"></div>
 		 </form>
-
 		</div>
+		</div>
+		
+		<script type="text/javascript">
+		$( function() {
+		    var availableProducts = [
+		      "Milk",
+		      "Bread",
+		      "Tomato",
+		      "Tim Tam",
+		      "Potato",
+		      "Smiths Thinly Cut",
+		      "KitKat",
+		      "CCs Doritos",
+		      "Cheese",
+		    ];
+		    $( "#search" ).autocomplete({
+		      source: availableProducts
+		    });
+		  } );
+		</script>
 </body>
 </html>

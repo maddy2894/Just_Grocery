@@ -26,7 +26,7 @@ public class WishListService implements WishListServiceManager {
 	}
 
 	@Override
-	public Map<String, Object> saveWishList(String wishlistname, String productList) { //Code to Save  WishList
+	public Map<String, Object> saveWishList(String wishlistname, String productList, String email) { //Code to Save  WishList
 		
 		Map<String, Object> myModel = new HashMap<String, Object>();
 		myModel.put("productList", productList);
@@ -35,7 +35,7 @@ public class WishListService implements WishListServiceManager {
         wish_list wishlist1=new wish_list();
         wishlist1.setWishlist_name(wishlistname);
         wishlist1.setList_of_products(productList);
-        wishlist1.setEmail_id("kp2@gmail.com"); //Adding email Id here
+        wishlist1.setEmail_id(email); //Adding email Id here
         
         Date updated_time=(new Date());  //Setting Current Time
         wishlist1.setUpdated_time(updated_time);

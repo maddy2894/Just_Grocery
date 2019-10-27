@@ -15,7 +15,7 @@
 </head>
 <body>
 	  <div class="container">
-   	  <h2 class="name">WishList</h2>
+   	  <h2 class="name" style="margin-top: 90px;">WishList</h2>
    	  <form action="newWishlist" method="post">
       <input type="button" class="btn btn-outline-dark" onclick="location.href='/elec5619/wishlist/newWishlist'" value="+New Wishlist">
       </form>

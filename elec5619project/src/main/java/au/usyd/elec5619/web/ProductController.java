@@ -30,7 +30,7 @@ import au.usyd.elec5619.domain.user;
 import au.usyd.elec5619.domain.admin_product_history;
 
 @Controller
-@RequestMapping(value = "/product/**")
+@RequestMapping(value = "/wishlist/product/**")
 public class ProductController{
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
@@ -39,16 +39,6 @@ public class ProductController{
 	@Resource(name = "productService")
 	private ProductService productService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView index(HttpSession session) {
-		
-		Object test = session.getAttribute("user");
-		logger.info(" "+ test.toString());
-		product_prices search = new product_prices();
-
-		return new ModelAndView("product", "search", search);
-	}
-	
 	@RequestMapping(value = "/get_products", method = RequestMethod.GET, headers="Accept=*/*")
 	public List<String> getProductList(@RequestParam("term") String query) {
 
@@ -56,27 +46,34 @@ public class ProductController{
 	}
 	
 	@RequestMapping(value = "/search", method = RequestMethod.POST)
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
+	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws ServletException,IOException {
 	
 	Date now = new Date();
 	String searchedProduct = request.getParameter("search");
 	admin_product_history searched_product = new admin_product_history();
+	String username = session.getAttribute("user").toString();
+	List<String> wishlists = productService.getWishlists(username);
 	searched_product.setProduct(searchedProduct);
 	searched_product.setSearched_date(now);
 	logger.info("loggerInfo" + this.productService.getProducts(searchedProduct, searched_product));
 	Map<String, Object> myModel = new HashMap<String, Object>();
 	myModel.put("now",now);
+	myModel.put("wishlists",wishlists);
 	myModel.put("products", this.productService.getProducts(searchedProduct, searched_product));
 	return new ModelAndView("search", "model", myModel);
 	
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public void add(HttpServletRequest request,
-	HttpServletResponse response) throws ServletException,IOException {
-	logger.info("Products fetched is " + request.getParameter("add"));
-
-	
+	public String add(HttpServletRequest request,
+	HttpServletResponse response, HttpSession session) throws ServletException,IOException {
+		
+	String product = request.getParameter("productName");
+	String wishlist =  request.getParameter("wishlistSelected");
+	String username = session.getAttribute("user").toString();
+	logger.info("I am here");
+	productService.addProducts(wishlist, product, username);
+	return "redirect:/wishlist/";
 	}
 	
 	public void setProductService(ProductService productService) {

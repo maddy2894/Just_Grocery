@@ -12,6 +12,7 @@
 	 
 	 }
 	 </style>
+	 <link href="${pageContext.request.contextPath }/resources/css/createwish_list-ps.css" rel="stylesheet">	
 	<script>
 		window.onload=function(){
 				var wishlistname=document.getElementById("wishlistname");
@@ -26,6 +27,24 @@
 					}
 				wishlistname.onfocus = function() {
 					if (wishlistname.value != "" || wishlistname.value != " ") {
+						var div = document.getElementById("error")
+						while( div.firstChild ) {
+						    div.removeChild( div.firstChild );
+						}	
+					}
+				}
+				var searchInput = document.getElementById("search");
+				searchInput.onblur = function() {
+					if (searchInput.value == "" || searchInput.value == " ") {
+						var div = document.getElementById("error")
+						while( div.firstChild ) {
+						    div.removeChild( div.firstChild );
+						}
+						div.appendChild( document.createTextNode("Please enter a product") );
+					}
+				}
+				searchInput.onfocus = function() {
+					if (searchInput.value != "" || searchInput.value != " ") {
 						var div = document.getElementById("error")
 						while( div.firstChild ) {
 						    div.removeChild( div.firstChild );
@@ -89,12 +108,34 @@
 		}
 		
 	}
+	function validateSearch() {
+		var searchInput = document.getElementById("search");
+		var productList = ["milk","bread","tomato","tim tam","potato","smiths thinly cut","kitkat","ccs doritos","cheese"];
+		if (productList.indexOf(searchInput.value.toLowerCase()) > -1) {
+			return true;
+		} else {
+			var div = document.getElementById("error")
+			while( div.firstChild ) {
+			    div.removeChild( div.firstChild );
+			}
+			div.appendChild( document.createTextNode("Sorry, we do not have any details about the product") );
+			return false;
+		}
+	}
 
 	</script>
 	
 </head>
 <body>
 	<div class="container">
+			<div class="productStyle">
+						<form action="product/search" method="post" onsubmit="return validateSearch()" class="form-inline my-2 my-lg-0">
+						      <input class="form-control mr-sm-2" name="search" id="search" placeholder="Search" aria-label="Search"/>
+						      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
+						      <br/>
+					    </form>
+					    <div id="error"> </div>
+		    </div>
 
 	<form action="saveEditedWishList" method="post" id="myForm" onsubmit="return sub();">
 
@@ -118,7 +159,6 @@
 		</select >
 		<input type="button" class="btn btn-outline-dark" onClick=" return addToCart(selectedValue.innerHTML) " value="Add to Cart"/ >
 		<div>Selected Product: <span id="selectedValue"></span></div>
-		<div>
 		
 
 
@@ -132,11 +172,11 @@
 		</c:forEach>
 		
 		<div style="margin-top:10px;">
-		<label> Active or In Active?</label>
+		<label> Delete?</label>
 		<select name="isActive" class="btn btn-outline-dark" class="form-control" id="exampleFormControlSelect1">
 		   <option value="Select">Select...</option>
-		   <option value="active">Active</option>
-		   <option value="inactive">In Active</option>
+		   <option value="active">No</option>
+		   <option value="inactive">Yes</option>
 		</select >
 		</div>
 
@@ -146,5 +186,23 @@
 	</form>
 
 	</div>
+	<script type="text/javascript">
+		$( function() {
+		    var availableProducts = [
+		      "Milk",
+		      "Bread",
+		      "Tomato",
+		      "Tim Tam",
+		      "Potato",
+		      "Smiths Thinly Cut",
+		      "KitKat",
+		      "CCs Doritos",
+		      "Cheese",
+		    ];
+		    $( "#search" ).autocomplete({
+		      source: availableProducts
+		    });
+		  } );
+		</script>
 </body>
 </html>

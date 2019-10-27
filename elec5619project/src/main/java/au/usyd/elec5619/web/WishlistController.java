@@ -32,8 +32,7 @@ public class WishlistController {
 	
 	@RequestMapping(value = "/") //Redirects to wishList page
 	public ModelAndView wishlist(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		//
-		String email="kp2@gmail.com";
+		String email=session.getAttribute("user").toString();
 		List wishlists = wishlistServiceManager.getAllWishlists(email);
 		Map<String, Object> myModel = new HashMap<String, Object>();
 		myModel.put("wishlists",wishlists);
@@ -50,11 +49,12 @@ public class WishlistController {
 	}
 	
 	@RequestMapping(value = "/saveWishlist", method = RequestMethod.POST)
-	public ModelAndView createNewWishlist(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView createNewWishlist(HttpServletRequest request, HttpServletResponse response,HttpSession session) {
 		  
         String wishlistname=request.getParameter("wishlistName");  // Getting WishList name
-		String productList=request.getParameter("productList"); //Taking code from input area to save as product List	
-		Map<String, Object> myModel=wishlistServiceManager.saveWishList(wishlistname,productList);	
+		String productList=request.getParameter("productList"); //Taking code from input area to save as product List
+		String email=session.getAttribute("user").toString();
+		Map<String, Object> myModel=wishlistServiceManager.saveWishList(wishlistname,productList,email);	
     	return new ModelAndView("savedWishlist","model",myModel);
 	}
 	
@@ -73,17 +73,20 @@ public class WishlistController {
 	
 	
 	@RequestMapping(value = "/saveEditedWishList", method=RequestMethod.POST)
-	public String saveEditedWishList(HttpServletRequest httpServletRequest) {	
+	public String saveEditedWishList(HttpServletRequest httpServletRequest,HttpSession session) {	
 		
 		String oldwishlist_name= httpServletRequest.getParameter("oldwishlist_name");
 		String isActive = httpServletRequest.getParameter("isActive");
+		String email=session.getAttribute("user").toString();
+		
 		 String is_Active;
 		
 		
 		wish_list wishlist1=new wish_list();
         wishlist1.setWishlist_name(httpServletRequest.getParameter("wishlistName"));
         wishlist1.setList_of_products(httpServletRequest.getParameter("form-control"));
-        wishlist1.setEmail_id("pooja@gmail.com");
+        
+        wishlist1.setEmail_id(email);
         
         Date updated_time=(new Date());
         wishlist1.setUpdated_time(updated_time);

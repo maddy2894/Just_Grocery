@@ -10,4 +10,6 @@ public interface ProductDAO {
 	public List<product_prices> getProductsDAO(String name);
 	public void storeSearchHistoryDAO(admin_product_history searched_product);
 	public List<String> getProductsList(String query);
+	public List<String> getWishlists(String username);
+	public void addProducts(String wishlist, String product, String username);
 }
