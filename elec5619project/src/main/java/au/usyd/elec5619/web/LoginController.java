@@ -64,9 +64,8 @@ public class LoginController {
 	  if(logged_in.equals("success"))
 	  {
 		  session.setAttribute("user", email);
-		  return new ModelAndView("logsuccess");
-	  }
-	  else {
+		  return new ModelAndView("home");
+	  } else {
 		  return new ModelAndView("login","model",myModel);
 	  }
 }

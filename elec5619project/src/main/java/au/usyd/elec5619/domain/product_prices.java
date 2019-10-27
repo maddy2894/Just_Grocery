@@ -18,7 +18,8 @@ public class product_prices implements Serializable {
 	//@JoinColumn(name="product_prices_v")
 	@Column(name="category")
 	private String category;
-	
+	@Column(name="product_image")
+	private String product_image;
 	@OneToOne
 	private retailer retailer;
 	
@@ -70,6 +71,13 @@ public class product_prices implements Serializable {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	
+	public String getProduct_image() {
+		return product_image;
+	}
+	public void setProduct_image(String product_image) {
+		this.product_image = product_image;
 	}
 	
 	

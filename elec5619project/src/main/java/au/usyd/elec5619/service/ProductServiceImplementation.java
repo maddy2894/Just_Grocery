@@ -7,14 +7,12 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 //import javax.servlet.http.HttpServletRequest;
 import au.usyd.elec5619.domain.admin_product_history;
 import au.usyd.elec5619.domain.product_prices;
 
 @Service(value="productService")
-@Transactional
 public class ProductServiceImplementation implements ProductService {
 	@Resource(name="productDao")
 	public ProductDAO productDao;
