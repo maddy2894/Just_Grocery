@@ -172,11 +172,11 @@
 		</c:forEach>
 		
 		<div style="margin-top:10px;">
-		<label> Active or In Active?</label>
+		<label> Delete?</label>
 		<select name="isActive" class="btn btn-outline-dark" class="form-control" id="exampleFormControlSelect1">
 		   <option value="Select">Select...</option>
-		   <option value="active">Active</option>
-		   <option value="inactive">In Active</option>
+		   <option value="active">No</option>
+		   <option value="inactive">Yes</option>
 		</select >
 		</div>
 

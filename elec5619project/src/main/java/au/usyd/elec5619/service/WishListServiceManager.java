@@ -7,7 +7,7 @@ import java.util.Map;
 public interface WishListServiceManager extends Serializable {
 
 
-	public Map<String, Object> saveWishList(String wishlistname, String productList);
+	public Map<String, Object> saveWishList(String wishlistname, String productList,String email);
 
 	public void saveEditedWishList(String oldwishlist_name, String newwishlist_name, String list_of_products,
 			String isActive);
