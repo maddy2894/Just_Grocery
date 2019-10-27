@@ -75,7 +75,7 @@
 		
 
 		if (wishlistname.value == "" || wishlistname.value == " " ) {
-			while( div.firstChild ) {
+			if( div.firstChild ) {
 			    div.removeChild( div.firstChild );
 			}
 			div.appendChild( document.createTextNode("Please enter Wishlist Name") );
@@ -142,7 +142,7 @@
 
 
 		<input type="submit"  style="margin-left: 460px;margin-top: 110px;" class="btn btn-outline-dark" value="Save WishList" >
-
+        <div id="errorlogin" style="text-align: center"></div>
 	</form>
 
 	</div>

@@ -122,7 +122,7 @@
 
 			<label>${model.retailers}</label>
 
-			<input type="submit"  style="margin-left: 460px;margin-top: 110px"; class="btn btn-outline-dark" value="Save Wishlist" >
+			<input type="submit" style="margin-left: 460px;margin-top: 110px"; class="btn btn-outline-dark" value="Save Wishlist" >
 			<div id="errorlogin" style="text-align: center"></div>
 		 </form>
 

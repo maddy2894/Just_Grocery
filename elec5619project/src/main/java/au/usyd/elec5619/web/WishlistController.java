@@ -66,8 +66,6 @@ public class WishlistController {
 	public ModelAndView editWishlist(HttpServletRequest httpServletRequest) { // Code when Clicked on Edit Single WishList	Card	
 		
 		String wishlistname = httpServletRequest.getParameter("wishlist_name");
-		System.out.println(httpServletRequest.getParameter("wishlist_name"));
-		
 		List details = wishlistManager.getOneWishList(wishlistname);
 		Map<String, Object> myModel = new HashMap<String, Object>();
 		myModel.put("wishlistdetails", details);
@@ -81,9 +79,9 @@ public class WishlistController {
 	public String saveEditedWishList(HttpServletRequest httpServletRequest) {	
 		
 		String oldwishlist_name= httpServletRequest.getParameter("oldwishlist_name");
-		   String is_Active;
 		String isActive = httpServletRequest.getParameter("isActive");
-		System.out.println("isActive"+isActive);
+		 String is_Active;
+		
 		
 		wish_list wishlist1=new wish_list();
         wishlist1.setWishlist_name(httpServletRequest.getParameter("wishlistName"));
