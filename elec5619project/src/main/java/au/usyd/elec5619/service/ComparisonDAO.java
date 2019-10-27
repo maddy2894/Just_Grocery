@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import au.usyd.elec5619.domain.product_prices;
 import au.usyd.elec5619.domain.retailer;
 import au.usyd.elec5619.domain.wish_list;
-import au.usyd.elec5619.web.HomeController;
+//import au.usyd.elec5619.web.HomeController;
 
 //@Service(value="retailerManager")
 @Service(value="comparisonDAO")

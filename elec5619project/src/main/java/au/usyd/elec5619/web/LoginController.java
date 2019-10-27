@@ -48,7 +48,7 @@ public class LoginController {
 	  return "login"; }
 	 
 	  @RequestMapping(value = "/login", method = RequestMethod.POST) 
-	  public ModelAndView addUserDetails(HttpServletRequest httpServletRequest, HttpSession session) {
+	  public String addUserDetails(HttpServletRequest httpServletRequest, HttpSession session) {
 	  
 		 
 	  System.out.println("im in post login");
@@ -64,12 +64,19 @@ public class LoginController {
 	  if(logged_in.equals("success"))
 	  {
 		  session.setAttribute("user", email);
-		  return new ModelAndView("logsuccess");
+		  //return new ModelAndView("logsuccess");
+		  return "redirect:/wishListComparison";
 	  }
 	  else {
-		  return new ModelAndView("login","model",myModel);
+		  return "redirect:/login_fail";
 	  }
-}
+	  }
+	  
+	  @RequestMapping(value = "/login_fail", method = RequestMethod.POST) 
+	  public String loginFailure(HttpServletRequest httpServletRequest, HttpSession session) {
+		  
+		  return "redirect:/login";
+	  }
 	 
 	 
 	 // @RequestMapping(value="/register", method= RequestMethod.POST)

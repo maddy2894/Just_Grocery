@@ -31,16 +31,25 @@ public class WishlistComparisonController
 	
 	  @Resource(name="comparisonServiceLayer")
   	  private ComparisonServiceInt comparisonServiceLayer;
-	
+	  private String email;
 	  
 	  
 	  @RequestMapping(value = "/wishListComparison", method = RequestMethod.GET)
-	  public ModelAndView handleRequest_new_again(HttpServletRequest request, HttpServletResponse response) throws ServletException,IOException {
-	  Map<Object, Object> myModel = new HashMap<Object, Object>();
-	  String email="pooja@gmail.com";
+	  public ModelAndView handleRequest_new_again(HttpServletRequest request, HttpServletResponse response,HttpSession session) throws ServletException,IOException {
 	  
+	  Object user_email = session.getAttribute("user");
+	  logger.info(" "+ user_email.toString());
+	  Map<Object, Object> myModel = new HashMap<Object, Object>();
+	  email=user_email.toString();
+	  if (email.equals(null)) {
+		  
+		  logger.info("Couldn't capture email_id. User not logged in!");
+		  return new ModelAndView("NotLogged", "msg_val","User should login first"); 
+	  }
+	  else {
 	  List<String> Loc = this.comparisonDAO.getLocations();
 	  List<String> wishlist_names=this.comparisonDAO.getWishLists(email);
+	  if(wishlist_names.size()>0) {
 	  String Location=Loc.get(0).toString();
 	  String wishList_val=wishlist_names.get(0).toString();
 	  String wishList = this.comparisonDAO.getProductsList(wishList_val, email) ;
@@ -50,7 +59,12 @@ public class WishlistComparisonController
 	  myModel_ret_final.put("WLnames", wishlist_names); 
 	  myModel_ret_final.put("selected_wl", wishList_val);
 	  myModel_ret_final.put("selected_loc", Location);
-	  return new ModelAndView("fetchComparisonPage", "model", myModel_ret_final); 
+	  return new ModelAndView("fetchComparisonPage", "model", myModel_ret_final); }
+	  else {
+		  Map<Object,Object> myModel_ret_final= new HashMap<Object, Object>();
+		  myModel_ret_final.put("msg", "No wishlists yet! Please go to wishlist tab and create one.");
+		  return new ModelAndView("fetchComparisonPage", "model", myModel_ret_final); }
+	  }
 	  }
 	 
 	
@@ -60,7 +74,7 @@ public class WishlistComparisonController
 	Map<Object, Object> myModel = new HashMap<Object, Object>();
 	String Location =request.getParameter("loc");
 	String wishList_val =request.getParameter("wishlist");
-	String email="pooja@gmail.com";
+	//String email="pooja@gmail.com";
 	String wishList = this.comparisonDAO.getProductsList(wishList_val, email) ;
 	logger.info("Products from WishList are "+ wishList);
 	//Map<Object,Object> myModel_ret=this.comparisonServiceLayer.formatDataChartsTable(myModel, Location, wishList);

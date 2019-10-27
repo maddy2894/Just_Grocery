@@ -89,6 +89,7 @@ chart3.render();
     </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="submit" class="btn btn-outline-dark" value="Fetch" />
 </form>
+<b><p>${msg}</p></b>
 <p style="display:inline">Comparison for your latest wishList </p><b><i><p style="display:inline">"${model.selected_wl}"</p></i></b><p style="display:inline"> and for your nearest location</p><b><i><p style="display:inline"> "${model.selected_loc}" </p></i></b><br><br>
 	<table class="table">
 	  <thead class="thead-light">
