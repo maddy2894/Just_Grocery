@@ -114,8 +114,6 @@
 <body>
 <div class="container" style="margin-left:465px;margin-top:100px; max-width:750px">
 
-
-
 <h1>Login</h1>
 <form action="/elec5619/login" onsubmit="return sub();" method="post">
 	<div class="form-group" >
@@ -139,6 +137,14 @@
  	<small>new to JustGrocery?</small>
  	<input type="submit" class="btn btn-outline-dark" value="Register"/>
  </form>
+ <br/>
+ <hr>
+ <h3>Our Team</h3>
+ <div>
+ 	
+ </div>
+ 
+
 </div>	
 </body> 
 </html> 
