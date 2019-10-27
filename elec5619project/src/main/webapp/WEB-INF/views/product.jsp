@@ -2,7 +2,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ include file="/WEB-INF/views/home.jsp" %>
+<%@ include file="/WEB-INF/views/include.jsp" %>
 <html>
 <head>
 	<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" />
@@ -20,7 +20,7 @@
 	<script>
 	function validateSearch() {
 		var searchInput = document.getElementById("search");
-		var productList = ["tomato", "milk", "bread"];
+		var productList = ["milk","bread","tomato","tim tam","potato","smiths thinly cut","kitkat","ccs doritos","cheese"];
 		if (productList.indexOf(searchInput.value.toLowerCase()) > -1) {
 			return true;
 		} else {
@@ -64,7 +64,7 @@
 		<div class="form-group">
 			<h2 style="text-align: center; margin-top: 55px;">Search Products</h2>
 		</div>
-		<form action="search" method="post" modelAttribute="search" onsubmit="return validateSearch()" class="form-inline my-2 my-lg-0">
+		<form action="product/search" method="post" modelAttribute="search" onsubmit="return validateSearch()" class="form-inline my-2 my-lg-0">
 	      <input class="form-control mr-sm-2" path="search" name="search" id="search" placeholder="Search" aria-label="Search"/>
 	      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
 	      <br/>

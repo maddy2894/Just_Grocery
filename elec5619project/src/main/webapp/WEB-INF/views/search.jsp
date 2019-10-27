@@ -1,6 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
-<%@ include file="/WEB-INF/views/home.jsp"%>
+<%@ include file="/WEB-INF/views/include.jsp"%>
 <html>
 <head>
 	<title>JustGrocery</title>
@@ -14,7 +14,7 @@
 		<div class="card-deck">
 			<c:forEach items="${model.products}" var="prod">
 			  <div class="card" style="min-width: 300px; margin-bottom: 5px;">
-			    <img src="https://oof-project.s3-ap-southeast-2.amazonaws.com/chips.jpg" style="width: 99%; margin-left:1px;" class="card-img-top" alt="...">
+			    <img src="${prod.product_image}" style="width: 99%; margin-left:1px;" class="card-img-top" alt="...">
 			    <div class="card-body">
 			      <h3 class="card-title"><c:out value="${prod.product_name}"/></h3>
 			      <h5>Price: $<c:out value="${prod.price}"/> </h5>
