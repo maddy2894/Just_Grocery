@@ -2,6 +2,7 @@ package au.usyd.elec5619.domain;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+
 import java.util.Date;
 
 import javax.persistence.*;
@@ -10,7 +11,6 @@ import javax.persistence.*;
 @Table(name="login_details_ad")
 
 public class login_details_ad implements Serializable {
-	
 	@Id
 	@GeneratedValue
 	@Column(name="login_number")
@@ -40,6 +40,7 @@ public class login_details_ad implements Serializable {
 	public void setEmail_id(String email_id) {
 		this.email_id = email_id;
 	}
+
 	public Timestamp getLogin_time() {
 		return login_time;
 	}

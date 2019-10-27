@@ -13,6 +13,7 @@ public class admin_product_history implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name="serachID")
+
 	private int searchID;
 	@Column(name="product")
 	private String product;
@@ -30,6 +31,7 @@ public class admin_product_history implements Serializable{
 	public void setProduct(String product) {
 		this.product = product;
 	}
+
 	public Date getSearched_date() {
 		return searched_date;
 	}

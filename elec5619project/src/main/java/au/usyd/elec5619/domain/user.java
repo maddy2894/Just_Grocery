@@ -33,6 +33,7 @@ private String last_name;
 @Column(name="post_code")
 private String post_code;
 
+
 @Column(name="mobile_no")
 private String mobile_no;
 
