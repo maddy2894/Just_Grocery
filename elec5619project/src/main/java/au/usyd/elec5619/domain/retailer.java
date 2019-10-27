@@ -7,7 +7,9 @@ import javax.persistence.*;
 @Table(name="retailer_details")
 public class retailer implements Serializable {
 	@Id
+	@GeneratedValue
 	@Column(name="id")
+	//@JoinColumn(name = "retailer_id")
 	private double id;
 	@Column(name="name")
 	private String name;
@@ -19,6 +21,7 @@ public class retailer implements Serializable {
 	private String location;
 	@Column(name="post_code")
 	private int post_code;
+	
 	public double getId() {
 		return id;
 	}

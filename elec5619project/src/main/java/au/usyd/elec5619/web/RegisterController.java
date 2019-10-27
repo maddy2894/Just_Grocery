@@ -37,12 +37,14 @@ public class RegisterController {
 	  }
 	 
 	
+
 	@RequestMapping(value = "/home", method = RequestMethod.POST) 
 	  public String addUserDetails(HttpServletRequest httpServletRequest) {
 	  
 	  String pass;
 	  System.out.println("im in post register"); 
 	  user us1 = new user();
+
 	  us1.setPasswd(httpServletRequest.getParameter("passwd"));
 	  us1.setEmail_id(httpServletRequest.getParameter("email_id"));
 	  us1.setFirst_name(httpServletRequest.getParameter("first_name"));
@@ -51,14 +53,15 @@ public class RegisterController {
 	 System.out.println(us1.getEmail_id());
 	 System.out.println(us1.getFirst_name());
 	 System.out.println(us1.getLast_name());
+
 	 
 	  this.loginManager.addRegDetails(us1); 
 	  return "regsuccess"; 
 	  }
 	
+
 	  public void setLoginManager(LoginManager loginManager) { 
 		  this.loginManager = loginManager; 
 		  }
-	 
-	 
+ 
 }

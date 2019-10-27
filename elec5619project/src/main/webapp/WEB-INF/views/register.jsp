@@ -1,5 +1,4 @@
 <%@ include file="/WEB-INF/views/include.jsp" %>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
 <html>   
@@ -114,6 +113,7 @@
 </head>
 <body>
 <h1>Register</h1>
+
 
 <form action="home" method="post">
 	FirstName:<input type="text" name="first_name" id="firstid"/>

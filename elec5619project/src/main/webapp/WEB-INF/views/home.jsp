@@ -1,55 +1,103 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ include file="/WEB-INF/views/include.jsp" %>
-<%@ page session="false" %>
-<html>
-	<head>
-		<title>Home</title>
-	</head>
-	<body>
-	<div style="margin-top: 65px;" class="container">
-	
-		<h2 style="text-align:center;">JustGrocery</h2>
-		<div class="card mb-3" style="max-width: 100%;">
-		  <div class="row no-gutters">
-		    <div class="col-md-4">
-		      <img src="<c:url value="/resources/images/comp.jpeg" />" class="card-img" alt="...">
-		    </div>
-		    <div class="col-md-8">
-		      <div class="card-body">
-		        <h5 class="card-title">Card title</h5>
-		        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-		      </div>
-		    </div>
-		  </div>
-		  <br>
-		  <hr>
-		  <br>
-		  <div class="row no-gutters">
-		    <div class="col-md-8">
-		      <div class="card-body">
-		        <h5 class="card-title">Card title</h5>
-		        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-		      </div>
-		    </div>
-		    <div class="col-md-4">
-		      <img src="<c:url value="/resources/images/admin.jpeg" />" class="card-img" alt="...">
-		    </div>
-		  </div>
-		  <div class="row no-gutters">
-		    <div class="col-md-4">
-		      <img src="<c:url value="/resources/images/admin_temp.jpeg" />" class="card-img" alt="...">
-		    </div>
-		    <div class="col-md-8">
-		      <div class="card-body">
-		        <h5 class="card-title">Card title</h5>
-		        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-		      </div>
-		    </div>
-		  </div>
-		</div>
-	</div>
-	</body>
-</html>
+<html>   
+<head>
+<title>Home</title>
+<style>
+		#error,#error1,#errorlogin {
+		color: red;
+		}
+		
+	</style>
+	<script>
+	window.onload = function() {
+		var searchInput = document.getElementById("usid");
+		var passInput= document.getElementById("passid");
+		searchInput.onblur = function() {
+			if (searchInput.value == "" || searchInput.value == " ") {
+				var div = document.getElementById("error")
+				while( div.firstChild ) {
+				    div.removeChild( div.firstChild );
+				}
+				div.appendChild( document.createTextNode("Please enter username") );
+			}
+		}
+		passInput.onblur = function() {
+			if (passInput.value == "" || passInput.value == " ") {
+				var divp = document.getElementById("error1")
+				while( divp.firstChild ) {
+				    divp.removeChild( divp.firstChild );
+				}
+				divp.appendChild( document.createTextNode("Please enter password") );
+			}
+		}
+		searchInput.onfocus = function() {
+			if (searchInput.value != "" || searchInput.value != " ") {
+				var div = document.getElementById("error")
+				while( div.firstChild ) {
+				    div.removeChild( div.firstChild );
+				}	
+			}
+		}
+		passInput.onfocus = function() {
+			if (passInput.value != "" || passInput.value != " ") {
+				var divp = document.getElementById("error1")
+				while( divp.firstChild ) {
+				    divp.removeChild( divp.firstChild );
+				}	
+			}
+		}
+	}
+	function sub()
+	{
+		var searchInput = document.getElementById("usid");
+		var passInput= document.getElementById("passid");
+		var div = document.getElementById("errorlogin");
+
+		if (passInput.value == "" || passInput.value == " " || searchInput.value == "" || searchInput.value == " ") {
+			console.log("invalid");
+			while( div.firstChild ) {
+			    div.removeChild( div.firstChild );
+			}
+			div.appendChild( document.createTextNode("Please enter username/password") );
+			return false;
+		} else {
+			console.log("valid");
+			while( div.firstChild ) {
+			    div.removeChild( div.firstChild );
+			}
+			return true;
+		}
+		
+	}
+	</script>
+
+
+
+</head>
+   
+<body>
+
+<div class="container">
+
+
+<h1>Login</h1>
+<form action="/elec5619/home/login" onsubmit="return sub();" method="post">  
+    Email:<input type="email" name="email_id" id="usid" />
+    <div id="error"> </div>
+    <br/>  
+    Password:<input type="password" name="passwd" id="passid"/>
+    <div id="error1"> </div>
+    <br/>  
+    <input type="submit" value="login"/> 
+    <div id="errorlogin"></div> 
+</form>
+<p> ${model}</p>
+ <form action="/elec5619/home/register/" method="post">
+ 	<input type="submit" value="register"/>
+ </form>
+ 
+
+
+</div>
+</body> 
+</html> 
