@@ -29,6 +29,7 @@ public class AdminController {
 	@Resource(name="adminManager")
 	private AdminManager adminManager;
 	
+	private retailer retail;
 	
 	@RequestMapping(value="/add_product")
 	public String addProduct(Model uiModel) {
@@ -45,13 +46,14 @@ public class AdminController {
 		String now = simpleDateFormat.format(new Date());
 		uiModel.addAttribute("date",now);
 		
-		newproduct.setProduct_id(httpServletRequest.getParameter("product_id"));
-		newproduct.setRetailer_id(httpServletRequest.getParameter("retailer_id"));
+		newproduct.setProduct_id(Integer.valueOf(httpServletRequest.getParameter("product_id")));
+		retail.setId(Double.valueOf(httpServletRequest.getParameter("retailer_id")));
+		newproduct.setRetailer(retail);
 			
 		newproduct.setProduct_name(httpServletRequest.getParameter("product_name"));
 	
-		newproduct.setPrice(httpServletRequest.getParameter("price"));
-		if(newproduct.getPrice()==null) {
+		newproduct.setPrice(Double.valueOf(httpServletRequest.getParameter("price")));
+		if(newproduct.getPrice()==0) {
 			return "add_product";
 		}
 		else
@@ -80,7 +82,7 @@ public class AdminController {
 	  	userdetails.setLast_name(httpServletRequest.getParameter("last_name"));
 	  	userdetails.setMobile_no(httpServletRequest.getParameter("mobile_no"));
 	  	userdetails.setPasswd(httpServletRequest.getParameter("passwd"));
-	  	userdetails.setPost_code(Integer.valueOf(httpServletRequest.getParameter("post_code")));
+	  	userdetails.setPost_code(httpServletRequest.getParameter("post_code"));
 	  	
 	  	this.adminManager.modifiedUserProfile(userdetails);
 	   
@@ -128,11 +130,11 @@ public class AdminController {
 		  String dataPointProduct = gsonObj.toJson(this.adminManager.getProductInfo());
 		  myModel.put("product_info",dataPointProduct);
 		 
-		String dataPointNoUserCount = gsonObj.toJson(this.adminManager.getNumberOfLogs());
-		myModel.put("number_of_logs", dataPointNoUserCount);
+		//String dataPointNoUserCount = gsonObj.toJson(this.adminManager.getNumberOfLogs());
+		//myModel.put("number_of_logs", dataPointNoUserCount);
 		
-		String dataPointerProductSearched = gsonObj.toJson(this.adminManager.getProductByDay());
-		myModel.put("search_by_day", dataPointerProductSearched);
+		//String dataPointerProductSearched = gsonObj.toJson(this.adminManager.getProductByDay());
+		//myModel.put("search_by_day", dataPointerProductSearched);
 		
 		return new ModelAndView("/userlogininfo","model",myModel);
 	}

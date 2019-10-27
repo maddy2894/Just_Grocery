@@ -40,7 +40,6 @@ public class product_prices implements Serializable {
 		this.id = id;
 	}
 
-
 	public Date getPrice_date() {
 		return price_date;
 	}
@@ -57,7 +56,6 @@ public class product_prices implements Serializable {
 		this.product_id = product_id;
 	}
 	
-
 	public String getProduct_name() {
 		return product_name;
 	}
@@ -71,7 +69,6 @@ public class product_prices implements Serializable {
 	}
 	
 	public void setPrice(double price) {
-
 		this.price = price;
 	}
 	public retailer getRetailer() {
@@ -96,7 +93,4 @@ public class product_prices implements Serializable {
 	}
 	
 	
-
-	
 }
-

@@ -1,5 +1,6 @@
 package au.usyd.elec5619.domain;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 import junit.framework.TestCase;
@@ -25,13 +26,13 @@ public class login_details_ad_test extends TestCase {
 	public void test_login_time() {
 		Date todays_date = new Date();
 		assertNull(login_details_ad.getLogin_time());
-		login_details_ad.setLogin_time(todays_date);
+		login_details_ad.setLogin_time((Timestamp) todays_date);
 		assertEquals(todays_date,login_details_ad.getLogin_time());
 	} //date
 	public void test_logout_time() {
 		Date todays_date = new Date();
 		assertNull(login_details_ad.getLogout_time());
-		login_details_ad.setLogout_time(todays_date);
+		login_details_ad.setLogout_time((Timestamp) todays_date);
 		assertEquals(todays_date,login_details_ad.getLogout_time());
 	}//date
 	public void test_elapsed_time() {

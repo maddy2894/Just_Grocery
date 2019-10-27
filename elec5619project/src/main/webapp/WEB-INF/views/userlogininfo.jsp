@@ -5,7 +5,7 @@
 
 
 <%@ include file="/WEB-INF/views/include.jsp" %>
-<%@ include file="/WEB-INF/views/home.jsp" %>
+
   
 <!DOCTYPE HTML>
 <html>
