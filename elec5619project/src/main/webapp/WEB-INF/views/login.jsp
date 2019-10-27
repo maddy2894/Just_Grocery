@@ -139,9 +139,24 @@
  </form>
  <br/>
  <hr>
- <h3>Our Team</h3>
- <div>
- 	
+ <h2 style=" margin-top: 260px; text-align: center;">Our Team</h2>
+ <br/>
+ <div style="display: flex;">
+	 <div>
+	 	<h4 style="color: black;">Pooja Shenoy</h4>
+	 </div>
+	 <div style="margin-left: 20px;">
+	 	<h4 style="color: black;">Krishna Sailesh</h4>
+	 </div>
+	 <div style="margin-left: 20px;">
+	 	<h4 style="color: black;">Madhavan Sundararaj</h4>
+	 </div>
+	 <div style="margin-left: 20px;">
+	 	<h4 style="color: black;">Giridhar Aynampudi</h4>
+	 </div>
+	 <div style="margin-left: 20px;">
+	 	<h4 style="color: black;">Shashank Jain</h4>
+	 </div>
  </div>
  
 
