@@ -24,7 +24,7 @@ import au.usyd.elec5619.domain.user;
 public class DbAdminManager implements AdminManager, ProductManager {
 	private static final Logger logger = LoggerFactory.getLogger(DbAdminManager.class);
 	private SessionFactory sessionFactory;
-	
+	String email_id;
 	
 	@Autowired
 	public void setSessionFactory(SessionFactory sf) {
@@ -39,6 +39,13 @@ public class DbAdminManager implements AdminManager, ProductManager {
 	public void addProduct(product_prices product_prices) {
 		Session session = sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
+		System.out.println(product_prices.getId());
+		System.out.println(product_prices.getPrice());
+		System.out.println(product_prices.getProduct_id());
+		System.out.println(product_prices.getProduct_image());
+		System.out.println(product_prices.getProduct_name());
+		System.out.println(product_prices.getCategory());
+		System.out.println(product_prices.getRetailer());
 		String string= (String) this.sessionFactory.getCurrentSession().save(product_prices);
 		Integer result = Integer.valueOf(string);		
 		commitTransaction(tx, session);
@@ -56,15 +63,18 @@ public class DbAdminManager implements AdminManager, ProductManager {
 	}
 
 	@Override
-	public List<user> updateuserprofile() {
-		return this.sessionFactory.getCurrentSession().createQuery("from user where email_id is 'shashankjain@gmail.com'").list();
+	public List<user> updateuserprofile(String test) {
+		
+		this.email_id =test;
+		return this.sessionFactory.getCurrentSession().createQuery("FROM user where email_id ='"+ email_id +"'").list();
 	}
 
 	@Override
-	public void modifiedUserProfile(user userdetails) {
+	public void modifiedUserProfile(user userdetails, String email_id) {
+		email_id = this.email_id;
 		Session currentSession = this.sessionFactory.getCurrentSession();
 		String hql = "delete from user where email_id =:name";
-		currentSession.createQuery(hql).setString("name", "shashankjain@gmail.com").executeUpdate();
+		currentSession.createQuery(hql).setString("name", email_id).executeUpdate();
 		
 		System.out.println("hello, i am from modified userproigle");
 		this.sessionFactory.getCurrentSession().save(userdetails);

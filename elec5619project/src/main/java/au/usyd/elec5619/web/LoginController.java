@@ -63,9 +63,17 @@ public class LoginController {
 	  myModel.put("logged", logged_in);
 	  if(logged_in.equals("success"))
 	  {
+		  if(email.equals("admin@justgrocery.com")) {
 		  session.setAttribute("user", email);
 		  //return new ModelAndView("logsuccess");
-		  return "redirect:/wishListComparison";
+		  //return "redirect:/wishListComparison";
+		  return "redirect:/userlogininfo";
+		  }
+		  else {
+			  session.setAttribute("user", email); 
+			  return "redirect:/wishListComparison";
+		  }
+	  
 	  }
 	  else {
 		  return "redirect:/login_fail";

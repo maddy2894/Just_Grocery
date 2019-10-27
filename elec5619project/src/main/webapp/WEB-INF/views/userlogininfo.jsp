@@ -56,7 +56,7 @@ var chart1 = new CanvasJS.Chart("chartContainer1", {
 		dataPoints: ${model.product_info}}]
 });
 
-
+/* 
 var chart2 = new CanvasJS.Chart("chartContainer2", {
 	theme: "light2",
 	exportEnabled: false,
@@ -97,37 +97,42 @@ var chart3 = new CanvasJS.Chart("chartContainer3", {
 		type: "line",
 		yValueFormatString: "#,##0 ",
 		dataPoints : ${model.search_by_day} }]
-});
+}); */
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 chart0.render();
 chart1.render();
-chart2.render();
-chart3.render();
 }
 </script>
 </head>
 <body>
+<table align="center" width="80px" >
+<tr>
+<td>
+<form action="add_product" method="get">
+ <input class="btn btn-outline-dark" type="submit" name="add_product" style="margin-right: 190px" value="Add Product" disabled/>
+ </form>
+</td>
+<td></td>
+<td>
+  <form action="add_retailer" method="get">
+ <div><input class="btn btn-outline-dark" type="submit" name="add_retailer" value="Add Retailer" disabled	/></div>
+ </form>
+</td>
+</tr>
+</table>
+
+
 <div class= "container">
 <div style="width: 100%; display: table;">
 	    <div style="display: table-row">
 		<!-- <div id="chartContainer" style="display: table-cell; width: 50%;"></div> -->
-		<div id="chartContainer" style="height: 360px; width: 40%;display: table-cell;"></div>
+		<div id="chartContainer" style="height: 360px; width: 40%;display: table-cell; float: left;"></div>
 		<div id="chartContainer1" style="height: 360px; width: 40%;display: table-cell;"></div>
-		</div>
-		<div style="display: table-row">
-		<div id="chartContainer2" style="height: 360px; width: 40%;display: table-cell;"></div>
-		<div id="chartContainer3" style="height: 360px; width: 40%;display: table-cell;"></div>
-		
-		</div>
+</div>
 </div>
 
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 </div>
- <form action="add_product" method="get">
- <input class="btn btn-primary" type="submit" name="add_product" value="Add Product"/>
- </form>
-  <form action="add_retailer" method="get">
- <input class="btn btn-primary" type="submit" name="add_retailer" value="Add Retailer"/>
- </form>
+ 
 </body>
 </html>                              

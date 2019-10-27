@@ -1,5 +1,4 @@
 <%@ include file="/WEB-INF/views/include.jsp" %>
-<%@ include file="/WEB-INF/views/home.jsp" %>
 <html>
 <head>
 	<title>Insert Products</title>

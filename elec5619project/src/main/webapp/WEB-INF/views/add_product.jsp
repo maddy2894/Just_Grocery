@@ -1,5 +1,4 @@
 <%@ include file="/WEB-INF/views/include.jsp" %>
-<%@ include file="/WEB-INF/views/home.jsp" %>
 <html>
   <head>
     <title>Add-product</title>
@@ -18,8 +17,8 @@
 <form class="needs-validation" novalidate action="add_product" method="post">
   
     <div class="form-row">
-      <label for="validationCustom01">Unique ID</label>
-      <input type="text" class="form-control" name="id" id="validationCustom01" placeholder="ID" value="" required>
+      <label for="validationCustom01">Category</label>
+      <input type="text" class="form-control" name="category" id="validationCustom01" placeholder="category" value="" required>
       <div class="valid-feedback">
         Looks good!
       </div>
