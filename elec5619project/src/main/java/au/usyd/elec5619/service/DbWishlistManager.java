@@ -58,7 +58,7 @@ public class DbWishlistManager implements WishListManager {
 	@Override
 	public void saveEditedWishList(wish_list wishlist1,String old_wishlistname) {		
 		
-		Query query =this.sessionFactory.getCurrentSession().createQuery("UPDATE wish_list SET wishlist_name = :wishlistname , list_of_products = :listofproducts "+" WHERE wishlist_name = :oldwishlistname");
+		Query query = this.sessionFactory.getCurrentSession().createQuery("UPDATE wish_list SET wishlist_name = :wishlistname , list_of_products = :listofproducts "+" WHERE wishlist_name = :oldwishlistname");
 		query.setParameter("wishlistname", wishlist1.wishlist_name);
 		query.setParameter("oldwishlistname",old_wishlistname);
 		query.setParameter("listofproducts",wishlist1.list_of_products);

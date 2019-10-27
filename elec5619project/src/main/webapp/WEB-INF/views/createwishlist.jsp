@@ -126,7 +126,8 @@
 <body>
 
 		<div class="container">
-			<div class="productStyle">
+			<div style="margin-top:90px;">
+			<div class="productStyle" >
 				<form action="product/search" method="post" onsubmit="return validateSearch()" class="form-inline my-2 my-lg-0">
 				      <input class="form-control mr-sm-2" name="search" id="search" placeholder="Search" aria-label="Search"/>
 				      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
@@ -166,7 +167,7 @@
 			<input type="submit" style="margin-left: 460px;margin-top: 110px"; class="btn btn-outline-dark" value="Save Wishlist" >
 			<div id="errorlogin" style="text-align: center"></div>
 		 </form>
-
+		</div>
 		</div>
 		
 		<script type="text/javascript">

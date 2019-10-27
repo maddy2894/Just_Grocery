@@ -50,4 +50,10 @@ public class ProductServiceImplementation implements ProductService {
 		return wishlists;
 	}
 	
+	@Override
+	public void addProducts(String wishlist, String product, String username) {
+		System.out.println("Product Service");
+		productDao.addProducts(wishlist, product, username);
+	}
+	
 }

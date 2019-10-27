@@ -65,11 +65,15 @@ public class ProductController{
 	}
 	
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public void add(HttpServletRequest request,
-	HttpServletResponse response) throws ServletException,IOException {
-	logger.info("Products fetched is " + request.getParameter("add"));
-
-	
+	public String add(HttpServletRequest request,
+	HttpServletResponse response, HttpSession session) throws ServletException,IOException {
+		
+	String product = request.getParameter("productName");
+	String wishlist =  request.getParameter("wishlistSelected");
+	String username = session.getAttribute("user").toString();
+	logger.info("I am here");
+	productService.addProducts(wishlist, product, username);
+	return "redirect:/wishlist/";
 	}
 	
 	public void setProductService(ProductService productService) {
