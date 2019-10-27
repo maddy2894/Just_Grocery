@@ -34,8 +34,11 @@
 		      </li>
 		      <li class="nav-item">
 		        <a class="nav-link" href="/elec5619/wishListComparison">WishList Comparison</a>
-		      </li>
+		      </li>		      
 		    </ul>
+		      <form action="/elec5619/logout" method="post" class="form-inline my-2 my-lg-0">
+					<input type="submit" class="btn btn-outline-light"  value="Logout">
+			  </form>
 		  </div>
 		</nav>
 	</body>

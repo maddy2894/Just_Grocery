@@ -48,7 +48,7 @@ public class LoginController {
 	  return "login"; }
 	 
 	  @RequestMapping(value = "/login", method = RequestMethod.POST) 
-	  public ModelAndView addUserDetails(HttpServletRequest httpServletRequest,  HttpSession session) {
+	  public String addUserDetails(HttpServletRequest httpServletRequest,  HttpSession session) {
 	  
 		 
 	  System.out.println("im in post login");
@@ -64,13 +64,22 @@ public class LoginController {
 	  if(logged_in.equals("success"))
 	  {
 		  session.setAttribute("user", email);
-		  return new ModelAndView("logsuccess");
+		  return  "redirect:/wishListComparison";     //new ModelAndView("logsuccess");
 	  }
 	  else {
-		  return new ModelAndView("login","model",myModel);
+		  return   "redirect:/login_failure";   //new ModelAndView("login","model",myModel);
 	  }
 }
-	 	
+	 
+	  
+	  @RequestMapping(value="/login_failure", method= RequestMethod.GET) 
+	  public ModelAndView login_failure(Locale locale,Model model) {
+	  logger.info("Welcome register! {}. ",locale); 
+	  Map<String,Object> myModel=new HashMap<String,Object>();
+	  myModel.put("logged", "Login is unsuccessful! Please check your email id/password and login again.\n If you are a new user, please register!");
+	  return new ModelAndView("login","model",myModel);
+	  }
+	  
 	  @RequestMapping(value="/register", method= RequestMethod.GET) 
 	  public String register(Locale locale,Model model) {
 	  logger.info("Welcome register! {}. ",locale); 
