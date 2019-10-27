@@ -30,7 +30,7 @@ import au.usyd.elec5619.domain.user;
 import au.usyd.elec5619.domain.admin_product_history;
 
 @Controller
-@RequestMapping(value = "/product/**")
+@RequestMapping(value = "/wishlist/product/**")
 public class ProductController{
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
@@ -38,16 +38,6 @@ public class ProductController{
 	
 	@Resource(name = "productService")
 	private ProductService productService;
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView index(HttpSession session) {
-		
-		Object test = session.getAttribute("user");
-		logger.info(" "+ test.toString());
-		product_prices search = new product_prices();
-
-		return new ModelAndView("product", "search", search);
-	}
 	
 	@RequestMapping(value = "/get_products", method = RequestMethod.GET, headers="Accept=*/*")
 	public List<String> getProductList(@RequestParam("term") String query) {

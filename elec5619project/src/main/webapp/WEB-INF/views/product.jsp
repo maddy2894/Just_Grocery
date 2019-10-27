@@ -64,8 +64,8 @@
 		<div class="form-group">
 			<h2 style="text-align: center; margin-top: 55px;">Search Products</h2>
 		</div>
-		<form action="product/search" method="post" modelAttribute="search" onsubmit="return validateSearch()" class="form-inline my-2 my-lg-0">
-	      <input class="form-control mr-sm-2" path="search" name="search" id="search" placeholder="Search" aria-label="Search"/>
+		<form action="product/search" method="post" onsubmit="return validateSearch()" class="form-inline my-2 my-lg-0">
+	      <input class="form-control mr-sm-2" name="search" id="search" placeholder="Search" aria-label="Search"/>
 	      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">Search</button>
 	      <br/>
 	    </form>
