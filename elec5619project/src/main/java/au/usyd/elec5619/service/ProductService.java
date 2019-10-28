@@ -10,4 +10,6 @@ public interface ProductService extends Serializable {
 
 	public List<product_prices> getProducts(String name, admin_product_history searched_product);
 	public List<String> getProductsList(String query);
+	public List<String> getWishlists(String username);
+	public void addProducts(String wishlist, String product, String username);
 }

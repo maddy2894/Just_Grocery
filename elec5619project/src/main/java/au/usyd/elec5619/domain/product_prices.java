@@ -22,6 +22,8 @@ public class product_prices implements Serializable {
 	@Column(name="category")
 	private String category;
 	
+	@Column(name="product_image")
+	private String product_image;
 	@OneToOne
 	private retailer retailer;
 	
@@ -30,10 +32,6 @@ public class product_prices implements Serializable {
 	
 	@Column(name="price")
 	private double price;
-	
-
-	@Column(name="product_image")
-	private String product_image;
 	
 	public int getId() {
 		return id;

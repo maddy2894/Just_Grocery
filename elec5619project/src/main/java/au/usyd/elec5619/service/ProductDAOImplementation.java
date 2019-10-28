@@ -29,7 +29,7 @@ public class ProductDAOImplementation implements ProductDAO {
 	public List<product_prices> getProductsDAO(String name) {
 		
 		
-		return this.sessionFactory.getCurrentSession().createQuery("from product_prices where product_name='"+name+"'").list();
+		return this.sessionFactory.getCurrentSession().createQuery("from product_prices where price_date='2019-10-20' and product_name='"+name+"'").list();
 	}
 	
 	@Override
@@ -41,6 +41,18 @@ public class ProductDAOImplementation implements ProductDAO {
 	public List<String> getProductsList(String query) {
 		
 		return this.sessionFactory.getCurrentSession().createQuery("SELECT DISTINCT product_name FROM product_prices").list(); 
+	}
+	
+	@Override
+	public List<String> getWishlists(String username) {
+		
+		return this.sessionFactory.getCurrentSession().createQuery("FROM wish_list where is_active='true' and email_id='"+ username +"'").list();
+	}
+	
+	@Override
+	public void addProducts(String wishlist, String product, String username) {
+		System.out.println("Product Service");
+		this.sessionFactory.getCurrentSession().createQuery("UPDATE wish_list SET list_of_products = concat(list_of_products,'," + product + "') WHERE wishlist_name = '" + wishlist + "' and email_id='"+ username + "'").executeUpdate();
 	}
 	
 }
