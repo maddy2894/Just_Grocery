@@ -12,7 +12,7 @@ public interface WishListManager extends Serializable {
  
 	public List getAllWishlists(String email);
 	
-	public List getOneWishList(String wishlistname);
+	public List getOneWishList(String wishlistname, String email);
 	
 	public void saveEditedWishList(wish_list wishlist1,String old_wishlistname);
 

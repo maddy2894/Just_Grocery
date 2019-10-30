@@ -55,7 +55,7 @@ public class RegisterController {
 	  System.out.println(us1.getMobile_no());
 	 
 	  this.loginManager.addRegDetails(us1); 
-	  return "regsuccess"; 
+	  return "redirect:/";
 	  }
 	
 

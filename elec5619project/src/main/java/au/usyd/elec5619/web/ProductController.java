@@ -40,8 +40,8 @@ public class ProductController{
 	private ProductService productService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String products() {
-
+	public String products(HttpSession session) {
+		session.getAttribute("user");
 		return "product";
 	}
 	

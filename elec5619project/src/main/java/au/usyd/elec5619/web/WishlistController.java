@@ -49,21 +49,21 @@ public class WishlistController {
 	}
 	
 	@RequestMapping(value = "/saveWishlist", method = RequestMethod.POST)
-	public ModelAndView createNewWishlist(HttpServletRequest request, HttpServletResponse response,HttpSession session) {
+	public String createNewWishlist(HttpServletRequest request, HttpServletResponse response,HttpSession session) {
 		  
         String wishlistname=request.getParameter("wishlistName");  // Getting WishList name
 		String productList=request.getParameter("productList"); //Taking code from input area to save as product List
 		String email=session.getAttribute("user").toString();
 		Map<String, Object> myModel=wishlistServiceManager.saveWishList(wishlistname,productList,email);	
-    	return new ModelAndView("savedWishlist","model",myModel);
+    	return "redirect:/wishListComparison";
 	}
 	
 	
 	@RequestMapping(value = "/editWishList", method=RequestMethod.POST)
-	public ModelAndView editWishlist(HttpServletRequest httpServletRequest) { // Code when Clicked on Edit Single WishList	Card	
-		
+	public ModelAndView editWishlist(HttpServletRequest httpServletRequest, HttpSession session) { // Code when Clicked on Edit Single WishList	Card	
+		String email=session.getAttribute("user").toString();
 		String wishlistname = httpServletRequest.getParameter("wishlist_name");
-		List details = wishlistManager.getOneWishList(wishlistname);
+		List details = wishlistManager.getOneWishList(wishlistname, email);
 		Map<String, Object> myModel = new HashMap<String, Object>();
 		myModel.put("wishlistdetails", details);
 		myModel.put("retailers", this.wishlistManager.getRetailers());

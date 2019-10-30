@@ -50,8 +50,8 @@ public class DbWishlistManager implements WishListManager {
 	}
 
 	@Override
-	public List getOneWishList(String wishlistname) {
-		 return this.sessionFactory.getCurrentSession().createQuery("FROM wish_list where wishlist_name='"+wishlistname+"'").list();
+	public List getOneWishList(String wishlistname, String email) {
+		 return this.sessionFactory.getCurrentSession().createQuery("FROM wish_list where wishlist_name='"+wishlistname+"' and email_id='"+email+"'").list();
 		 
 	}
 
